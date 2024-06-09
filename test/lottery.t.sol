@@ -11,10 +11,10 @@ contract CounterTest is Test, StructList {
 
     OverflowICO public ido;
     WETH9 public salesToken;
-    address public user = 0x0f7bF2e6BEbf3d352405B0f855d4B6fC6Fe50b3F;
-    address public user2 = 0xDD47792c1A9f8F12a44c299f1be85FFD72A4B746;
+    address public user = 0x0cCCFCeccCc3cC32cc0cbCf5cFcc6cCcFC5cBcfC;
+    address public user2 = 0x0CCcfCeccCC3CC32CC0cFFffcFcc6ccCFc5cbCFC;
     
-    address deployer = 0xDD47792c1A9f8F12a44c299f1be85FFD72A4B746;
+    address deployer = 0x0CCcfCeccCC3CC32CC0cFFffcFcc6ccCFc5cbCFC;
 
     uint public startTime = 100000000000;
     uint public endTime = startTime + 1000;
