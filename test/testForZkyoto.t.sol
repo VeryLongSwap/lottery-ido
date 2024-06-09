@@ -22,16 +22,15 @@ contract CounterTest is Test, StructList {
     uint public tokensToRaise = 1e18;
     address public dead = 0x000000000000000000000000000000000000dEaD;
 
-    address public moti = address(new WETH9(address(this)));
-    address public USDC = address(new WETH9(address(this)));
-    address public isom = address(new WETH9(address(this)));
+    address public moti = 0x564d3De018dECF88f10e4F61CC988e7424faC912;
+    address public USDC = 0xD2119e73b34f3D8E07B4aC289DbD766e632F31E3;
+    address public isom = 0x2a4E2eb4c1522Bb7Db43Ab34597078FE5Db45bEA;
     IERC20[] public buyerTokens;
     uint[] public tokensPerTickets = [1e18, 1e18];
 
+    // test on zkyoto network
+
     function setUp() public {
-        WETH9(moti).mint(deployer, 1e30);
-        WETH9(USDC).mint(deployer, 1e30);
-        WETH9(isom).mint(deployer, 1e30);
 
         buyerTokens.push(WETH9(moti));
         buyerTokens.push(WETH9(isom));

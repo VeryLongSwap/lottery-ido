@@ -106,28 +106,24 @@ contract OverflowICO is Ownable(msg.sender), ReentrancyGuard, LinearVesting, Str
 
 
     constructor(
-        // 売る対象
         IERC20 _salesToken,
-        // commitに使うトークン
         IERC20[] memory _buyerTokens,
-        // 売る枚数
         uint256 _tokensToSell,
-        // IDO開始時刻
         uint256 _startTime,
-        // IDO終了時刻
+        
         uint256 _endTime,
-        // claim2開始時刻
+        
         uint256 _receiveTime,
-        // vest時間関連0でよくない？
+        
         uint256 _vestingBegin,
         uint256 _vestingDuration,
-        // vest割合 0でいいよ
+        
         uint256 _vestingProportion,
-        // 1チケットあたりトークンいくら？ 1e18とかそういう感じね
+        
         uint256[] memory _tokensPerTicket,
-        // vest用トークン枚数かな 0でいいよ
+        
         uint256 _totalEmission,
-        // バーンアドレス　売れ残りをここに送るっぽい
+        
         address _burnAddress
     ) LinearVesting(_salesToken, _vestingBegin, _vestingDuration) {
         require(_startTime >= block.timestamp, "Start time must be in the future.");
@@ -168,36 +164,26 @@ contract OverflowICO is Ownable(msg.sender), ReentrancyGuard, LinearVesting, Str
         salesToken.safeTransferFrom(msg.sender, address(this), tokensToSell + totalEmission);
     }
 
-    // 入金 _amount = ticketAmount
+    
     function commit(uint _amount, address _token) external payable nonReentrant {
-        //whitelist機能があるらしい 一旦無効で...
-        /*
-        require(
-            keccak256(abi.encode(msg.sender)).toEthSignedMessageHash().recover(sig)
-                == 0x9998719cd6CE8F82e8842c2c9b0C71AA1A5301BD,
-            "not whitelisted"
-        );*/
-        // startTime ~ endTimeしか入金を許さん
         require(
             started && block.timestamp >= startTime && block.timestamp < endTime,
             "Can only deposit Ether during the sale period."
         );
 
-        // 額の制限
         require(_amount > 0, "Commitment amount is outside the allowed range.");
 
-        //このトークンって使えるやつ？
         (bool _success, uint _tokenIndex) = _checkAvailableToken(_token);
         require(_success, "this token is not available");
 
         IERC20(buyerTokens[_tokenIndex]).transferFrom(msg.sender, address(this), _amount * tokensPerTicket[_tokenIndex]);
 
-        // 初期化 boolはデフォルトでfalseだから設定しなくていいらしい
+        
 
-        // userInfos[msg.sender].isClaimed = false;
-        // userInfos[msg.sender].noRefund = false;
+        
+        
 
-        // length == 0つまり初commitの場合は0入れて初期化
+        
         if (userInfos[msg.sender].tickets.length == 0) {
             for (uint i = 0; i < buyerTokens.length; ++i){
                 userInfos[msg.sender].tickets.push(0);
@@ -220,36 +206,36 @@ contract OverflowICO is Ownable(msg.sender), ReentrancyGuard, LinearVesting, Str
                 return (true, i);
             }
         }
-        // 流石に10000トークンも使わないです
+        
         return (false, 0);
     }
     function refund(uint _index) external nonReentrant {
         require(block.timestamp >= receiveTime, "not claimable yet");
         require(_index < buyerTokens.length, "invalid index");
-        // 未返金の場合のみrefund
+        
         require(userInfos[msg.sender].noRefund[_index] == false, "No refunds available");
         userInfos[msg.sender].noRefund[_index] = true;
         if (userInfos[msg.sender].tickets[_index] > 0) buyerTokens[_index].safeTransfer(msg.sender, userInfos[msg.sender].tickets[_index] * tokensPerTicket[_index]);
 
     }
 
-    // ほんもののclaim これでトークンが貰えるっぽい
+    
     function claim2() external nonReentrant {
         require(block.timestamp >= receiveTime, "not claimable yet");
         require(userInfos[msg.sender].isClaimed == false, "no claims available");
-        //tokensToReceive
+        
         uint256 a1 = userInfos[msg.sender].finalTokens;
-        // 先着を考慮してない方
+        
         uint256 a2 = userInfos[msg.sender].finalEmissions;
         require(a1 != 0 || a2 != 0, "no claims available");
         
         userInfos[msg.sender].isClaimed = true;
         userInfos[msg.sender].finalEmissions = 0;
-        // vestingProportion = 3e17ぽい
+        
         uint256 vesting = a1 * vestingProportion / 1e18;
-        //30%をあとからclaimするようにしてるぽい　だからvestingProportionを0にすれば全額即時請求！
+        
         _grantVestedReward(msg.sender, vesting);
-        //なんでsalesTokenとemissionTokenが分かれてんの？
+        
         salesToken.safeTransfer(msg.sender, a1 - vesting + a2);
         emit Claim2(msg.sender, a1, a2);
     }
@@ -259,8 +245,8 @@ contract OverflowICO is Ownable(msg.sender), ReentrancyGuard, LinearVesting, Str
         require(!finished, "Already finished.");
         finished = true;
 
-        // 運営が売上吸おうとしても全額吸っちゃうから、なんとかしな
-        // refund分だけ残してそれ以外を回収できる関数を作るべき
+        
+        
         for (uint i = 0; i < buyerTokens.length; ++i){
             if (consumedTokens[i] > 0) IERC20(buyerTokens[i]).transfer(owner(), consumedTokens[i]);
         }
