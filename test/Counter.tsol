@@ -1,0 +1,133 @@
+// SPDX-License-Identifier: UNLICENSED
+pragma solidity ^0.8.20;
+
+import {Test, console} from "forge-std/Test.sol";
+import {OverflowICO} from "../src/Counter.sol";
+import {WETH9} from "../src/WETH.sol";
+
+contract CounterTest is Test {
+    OverflowICO public ido;
+    WETH9 public buyerToken;
+    WETH9 public salesToken;
+    address public user = 0x0f7bF2e6BEbf3d352405B0f855d4B6fC6Fe50b3F;
+    address public user2 = 0xDD47792c1A9f8F12a44c299f1be85FFD72A4B746;
+    uint public startTime = 1746779504;
+    uint public endTime = startTime + 1000;
+    uint public tokensToSell = 1e18;
+    uint public tokensToRaise = 1e18;
+    address public dead = 0x000000000000000000000000000000000000dEaD;
+    
+    function setUp() public {
+        buyerToken = new WETH9(address(this));
+        salesToken = new WETH9(address(this)); 
+
+        ido = new OverflowICO(
+            // salesToken
+            salesToken,
+            // buyerToken
+            buyerToken,
+            // tokensToSell 売る枚数
+            tokensToSell,
+            // tokensToRaise 集金上限
+            tokensToRaise,
+            // refundthreshold 返金閾値
+            0,
+            // startTime
+            startTime,
+            // endTime
+            endTime,
+            // receiveTime
+            endTime + 100,
+            // vestingBegin
+            0,
+            // vestingDuration
+            0,
+            // vestingProportion
+            0,
+            // minCommit
+            200,
+            // maxCommit
+            1000e18,
+            // totalEmission 先行者利益の額
+            0,
+            // burnAddress
+            dead
+        );
+
+        buyerToken.approve(address(ido), type(uint256).max);
+        salesToken.approve(address(ido), type(uint256).max);
+        
+        vm.warp(startTime - 1);
+        ido.start();
+    }
+
+    function testSoloIDO() public {
+        buyerToken.transfer(user, 2e18);
+        vm.startPrank(user);
+        buyerToken.approve(address(ido), type(uint256).max);
+        vm.expectRevert("not started");
+        ido.commit(1e18);
+        vm.warp(startTime + 1);
+        ido.commit(2e18);
+        assertEq(ido.commitments(user), 2e18);
+        vm.expectRevert("Can only claim tokens after the sale has ended.");
+        ido.claim();
+        vm.warp(endTime + 1);
+        ido.claim();
+        assertEq(buyerToken.balanceOf(user), 2e18 - tokensToRaise);
+        vm.expectRevert("not claimable yet");
+        ido.claim2();
+        vm.warp(endTime + 1000);
+        ido.claim2();
+        assertEq(salesToken.balanceOf(user), tokensToSell);
+        vm.stopPrank();
+        ido.finish();
+    }
+
+    function testMultiUserIDO() public {
+        buyerToken.transfer(user, 1e18);
+        buyerToken.transfer(user2, 3e18);
+        vm.prank(user);
+        buyerToken.approve(address(ido), type(uint256).max);
+        vm.prank(user2);
+        buyerToken.approve(address(ido), type(uint256).max);
+        
+        vm.warp(startTime + 1);
+        vm.prank(user);
+        ido.commit(1e18);
+        vm.prank(user2);
+        ido.commit(3e18);
+        assertEq(ido.commitments(user), 1e18);
+        assertEq(ido.commitments(user2), 3e18);
+        vm.warp(endTime + 1);
+        vm.prank(user);
+        ido.claim();
+        vm.prank(user2);
+        ido.claim();
+        vm.warp(endTime + 1000);
+        vm.prank(user);
+        ido.claim2();
+        vm.prank(user2);
+        ido.claim2();
+        assertEq(salesToken.balanceOf(user), tokensToSell / 4);
+        assertEq(salesToken.balanceOf(user2), tokensToSell * 3 / 4);
+    }
+
+    function testBurn() public {
+        buyerToken.transfer(user, tokensToRaise / 2);
+        vm.startPrank(user);
+        buyerToken.approve(address(ido), type(uint256).max);
+        vm.warp(startTime + 1);
+        ido.commit(tokensToRaise / 2);
+        assertEq(ido.commitments(user), tokensToRaise / 2);
+        vm.warp(endTime + 1);
+        ido.claim();
+        assertEq(buyerToken.balanceOf(user), 0);
+        vm.warp(endTime + 1000);
+        ido.claim2();
+        assertEq(salesToken.balanceOf(user), tokensToSell / 2);
+        vm.stopPrank();
+        ido.finish();
+        assertEq(salesToken.balanceOf(dead), tokensToSell / 2);
+    }
+}

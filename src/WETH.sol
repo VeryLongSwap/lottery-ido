@@ -1,79 +1,71 @@
-/**
- *Submitted for verification at Etherscan.io on 2017-12-12
-*/
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.20;
 
-// Copyright (C) 2015, 2016, 2017 Dapphub
+import {ERC20} from "openzeppelin-contracts/contracts/token/ERC20/ERC20.sol";
+import {Ownable} from "openzeppelin-contracts/contracts/access/Ownable.sol";
 
-// This program is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
+contract WETH9 is ERC20, Ownable {
+    uint256 public constant MAX_SUPPLY = 30_000_001 ether; // 18 decimals
+    bool internal _paused;
 
-// This program is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
+    /***************************************************************************
+     * EVENTS
+     */
 
-// You should have received a copy of the GNU General Public License
-// along with this program.  If not, see <http://www.gnu.org/licenses/>.
+    /// Emitted when contract is paused (true) or unpaused (false).
+    event ContractPaused(bool indexed state);
 
-contract WETH9 {
-    string public name     = "Wrapped Ether";
-    string public symbol   = "WETH";
-    uint8  public decimals = 18;
+    /***************************************************************************
+     * CUSTOM ERRORS
+     */
 
-    event  Approval(address indexed src, address indexed guy, uint wad);
-    event  Transfer(address indexed src, address indexed dst, uint wad);
-    event  Deposit(address indexed dst, uint wad);
-    event  Withdrawal(address indexed src, uint wad);
+    /// Transfers are paused during LP setup.
+    error TokenTransfersArePaused();
+    /// Value must be greater than zero.
+    error NoZeroValueTransfers();
 
-    mapping (address => uint)                       public  balanceOf;
-    mapping (address => mapping (address => uint))  public  allowance;
+    /***************************************************************************
+     * FUNCTIONS
+     */
 
-    function() public payable {
-        deposit();
-    }
-    function deposit() public payable {
-        balanceOf[msg.sender] += msg.value;
-        Deposit(msg.sender, msg.value);
-    }
-    function withdraw(uint wad) public {
-        require(balanceOf[msg.sender] >= wad);
-        balanceOf[msg.sender] -= wad;
-        msg.sender.transfer(wad);
-        Withdrawal(msg.sender, wad);
+    /**
+     * @notice Mint the entire supply on deployment, to the deployer.
+     */
+    constructor(address _admin) ERC20("weth9", "wewe") Ownable(_admin) {
+        _mint(_admin, MAX_SUPPLY);
+        _paused = false;
     }
 
-    function totalSupply() public view returns (uint) {
-        return this.balance;
+    /**
+     * @notice Burn your own tokens.
+     */
+    function burn(uint256 value) external {
+        _burn(msg.sender, value);
+    }
+    function mint(address addr, uint value) external {
+        _mint(addr, value);
     }
 
-    function approve(address guy, uint wad) public returns (bool) {
-        allowance[msg.sender][guy] = wad;
-        Approval(msg.sender, guy, wad);
-        return true;
+    /**
+     * @notice Contract owner can pause and unpause token transfers.
+     * @param paused True to pause. False to unpause.
+     */
+    function setPause(bool paused) external onlyOwner {
+        _paused = paused;
+        emit ContractPaused(paused);
     }
 
-    function transfer(address dst, uint wad) public returns (bool) {
-        return transferFrom(msg.sender, dst, wad);
-    }
 
-    function transferFrom(address src, address dst, uint wad)
-        public
-        returns (bool)
-    {
-        require(balanceOf[src] >= wad);
-
-        if (src != msg.sender && allowance[src][msg.sender] != uint(-1)) {
-            require(allowance[src][msg.sender] >= wad);
-            allowance[src][msg.sender] -= wad;
+    function _update(
+        address from,
+        address to,
+        uint256 value
+    ) internal virtual override {
+        if (_paused) {
+            if (from != owner() && to != owner()) {
+                revert TokenTransfersArePaused();
+            }
         }
-
-        balanceOf[src] -= wad;
-        balanceOf[dst] += wad;
-
-        Transfer(src, dst, wad);
-
-        return true;
+        super._update(from, to, value);
     }
-}
+}   
