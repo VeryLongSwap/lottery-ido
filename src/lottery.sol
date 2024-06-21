@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: MIT 
+// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.23;
 
 import "openzeppelin-contracts/contracts/access/Ownable.sol";
@@ -13,11 +13,8 @@ interface Token {
 }
 contract StructList {
     struct UserInfo {
-
         uint256[] tickets;
         uint256 finalTokens;
-        uint256 finalEmissions;
-
         bool[] noRefund;
         bool isClaimed;
         bool[] hasWon;
@@ -42,7 +39,11 @@ contract LinearVesting is ReentrancyGuard {
 
     event ClaimVesting(address addr, uint256 amount);
 
-    constructor(IERC20 rewardToken_, uint256 vestBeginning_, uint256 vestDuration_) {
+    constructor(
+        IERC20 rewardToken_,
+        uint256 vestBeginning_,
+        uint256 vestDuration_
+    ) {
         rewardToken = rewardToken_;
         vestBeginning = vestBeginning_;
         vestDuration = vestDuration_;
@@ -62,7 +63,11 @@ contract LinearVesting is ReentrancyGuard {
         } else if (block.timestamp >= vestBeginning + vestDuration) {
             vested = claimableTotal[addr];
         } else {
-            vested = Math.mulDiv(claimableTotal[addr], block.timestamp - vestBeginning, vestDuration);
+            vested = Math.mulDiv(
+                claimableTotal[addr],
+                block.timestamp - vestBeginning,
+                vestDuration
+            );
         }
 
         uint256 delta = vested - claimed[addr];
@@ -74,20 +79,24 @@ contract LinearVesting is ReentrancyGuard {
     }
 }
 
-contract OverflowICO is Ownable(msg.sender), ReentrancyGuard, LinearVesting, StructList {
+contract OverflowICO is
+    Ownable(msg.sender),
+    ReentrancyGuard,
+    LinearVesting,
+    StructList
+{
     using SafeERC20 for IERC20;
     using ECDSA for bytes32;
 
     IERC20[] public buyerTokens;
     IERC20 public immutable salesToken;
-    uint256 private immutable salesTokenDecimals;
     uint256 public immutable tokensToSell;
     uint256 public immutable totalEmission;
     uint256 public immutable startTime;
     uint256 public immutable endTime;
     uint256 public immutable receiveTime;
     address public immutable burnAddress;
-    uint256 public immutable vestingProportion;
+    uint256 public vestingProportion;
 
     uint256[] public tokensPerTicket;
 
@@ -101,45 +110,57 @@ contract OverflowICO is Ownable(msg.sender), ReentrancyGuard, LinearVesting, Str
     mapping(address => UserInfo) public userInfos;
 
     event Commit(address indexed buyer, uint256 amount);
-    event Claim(address indexed buyer, uint256 eth, uint256 token, uint256 emission);
-    event Claim2(address indexed buyer, uint256 token, uint256 emission);
-
+    event Claim(
+        address indexed buyer,
+        uint256 eth,
+        uint256 token,
+        uint256 emission
+    );
+    event Claim2(address indexed buyer, uint256 token);
 
     constructor(
         IERC20 _salesToken,
         IERC20[] memory _buyerTokens,
         uint256 _tokensToSell,
         uint256 _startTime,
-        
         uint256 _endTime,
-        
         uint256 _receiveTime,
-        
         uint256 _vestingBegin,
         uint256 _vestingDuration,
-        
         uint256 _vestingProportion,
-        
         uint256[] memory _tokensPerTicket,
-        
         uint256 _totalEmission,
-        
         address _burnAddress
     ) LinearVesting(_salesToken, _vestingBegin, _vestingDuration) {
-        require(_startTime >= block.timestamp, "Start time must be in the future.");
-        require(_endTime > _startTime, "End time must be greater than start time.");
-        for (uint i = 0; i < _tokensPerTicket.length; ++i){
-            require(_tokensPerTicket[i] > 0, "tokensPerTicket should be greater than 0");
+        require(
+            _startTime >= block.timestamp,
+            "Start time must be in the future."
+        );
+        require(
+            _endTime > _startTime,
+            "End time must be greater than start time."
+        );
+        for (uint i = 0; i < _tokensPerTicket.length; ++i) {
+            require(
+                _tokensPerTicket[i] > 0,
+                "tokensPerTicket should be greater than 0"
+            );
         }
-        require(_tokensPerTicket.length == _buyerTokens.length, "length mismatched");
-        
+        require(
+            _tokensPerTicket.length == _buyerTokens.length,
+            "length mismatched"
+        );
+        require(
+            vestingProportion <= 1e18,
+            "Vesting proportion must not exceed 100%"
+        );
+
         totalCommitments = new uint[](_buyerTokens.length);
         consumedTokens = new uint[](_buyerTokens.length);
 
         buyerTokens = _buyerTokens;
         salesToken = _salesToken;
-        
-        salesTokenDecimals = Token(address(salesToken)).decimals();
+
         tokensToSell = _tokensToSell;
         startTime = _startTime;
         endTime = _endTime;
@@ -150,24 +171,62 @@ contract OverflowICO is Ownable(msg.sender), ReentrancyGuard, LinearVesting, Str
         vestingProportion = _vestingProportion;
     }
 
-    function returnUserInfo(address _addr) external view returns (UserInfo memory) {
+    function returnUserInfo(
+        address _addr
+    ) external view returns (UserInfo memory) {
         return userInfos[_addr];
     }
 
-    function getStatus() external view returns (IERC20[] memory, uint, uint, uint[] memory, uint, uint[] memory) {
-        return (buyerTokens, startTime, endTime, tokensPerTicket, tokensToSell, totalCommitments);
+    function getStatus()
+        external
+        view
+        returns (
+            IERC20[] memory,
+            uint,
+            uint,
+            uint[] memory,
+            uint,
+            uint[] memory
+        )
+    {
+        return (
+            buyerTokens,
+            startTime,
+            endTime,
+            tokensPerTicket,
+            tokensToSell,
+            totalCommitments
+        );
     }
-    
+
     function start() external onlyOwner {
         require(!started, "Already started.");
         started = true;
-        salesToken.safeTransferFrom(msg.sender, address(this), tokensToSell + totalEmission);
+        salesToken.safeTransferFrom(
+            msg.sender,
+            address(this),
+            tokensToSell + totalEmission
+        );
     }
 
-    
-    function commit(uint _amount, address _token) external payable nonReentrant {
+    function updateVestingProportion(
+        uint256 _newVestingProportion
+    ) external onlyOwner {
         require(
-            started && block.timestamp >= startTime && block.timestamp < endTime,
+            _newVestingProportion <= 1e18,
+            "Vesting proportion must not exceed 100%"
+        );
+        vestingProportion = _newVestingProportion;
+    }
+
+    function commit(
+        uint _amount,
+        address _token
+    ) external payable nonReentrant {
+        require(
+            started &&
+                block.timestamp >= startTime &&
+                block.timestamp < endTime,
             "Can only deposit Ether during the sale period."
         );
 
@@ -176,16 +235,15 @@ contract OverflowICO is Ownable(msg.sender), ReentrancyGuard, LinearVesting, Str
         (bool _success, uint _tokenIndex) = _checkAvailableToken(_token);
         require(_success, "this token is not available");
 
-        IERC20(buyerTokens[_tokenIndex]).transferFrom(msg.sender, address(this), _amount * tokensPerTicket[_tokenIndex]);
+        IERC20(buyerTokens[_tokenIndex]).transferFrom(
+            msg.sender,
+            address(this),
+            _amount * tokensPerTicket[_tokenIndex]
+        );
 
-        
-
-        
-        
-
-        
         if (userInfos[msg.sender].tickets.length == 0) {
-            for (uint i = 0; i < buyerTokens.length; ++i){
+            uint tokensLength = buyerTokens.length;
+            for (uint i = 0; i < tokensLength; ++i) {
                 userInfos[msg.sender].tickets.push(0);
                 userInfos[msg.sender].noRefund.push(false);
                 userInfos[msg.sender].hasWon.push(false);
@@ -195,65 +253,81 @@ contract OverflowICO is Ownable(msg.sender), ReentrancyGuard, LinearVesting, Str
         userInfos[msg.sender].tickets[_tokenIndex] += _amount;
         totalCommitments[_tokenIndex] += _amount * tokensPerTicket[_tokenIndex];
 
-        console.log(userInfos[msg.sender].tickets[0], userInfos[msg.sender].tickets[1]);
+        console.log(
+            userInfos[msg.sender].tickets[0],
+            userInfos[msg.sender].tickets[1]
+        );
 
         emit Commit(msg.sender, _amount);
     }
 
-    function _checkAvailableToken(address _token) internal view returns (bool, uint) {
-        for (uint i = 0; i < buyerTokens.length; ++i) {
+    function _checkAvailableToken(
+        address _token
+    ) internal view returns (bool, uint) {
+        uint tokensLength = buyerTokens.length;
+        for (uint i = 0; i < tokensLength; ++i) {
             if (address(buyerTokens[i]) == _token) {
                 return (true, i);
             }
         }
-        
+
         return (false, 0);
     }
     function refund(uint _index) external nonReentrant {
         require(block.timestamp >= receiveTime, "not claimable yet");
         require(_index < buyerTokens.length, "invalid index");
-        
-        require(userInfos[msg.sender].noRefund[_index] == false, "No refunds available");
-        userInfos[msg.sender].noRefund[_index] = true;
-        if (userInfos[msg.sender].tickets[_index] > 0) buyerTokens[_index].safeTransfer(msg.sender, userInfos[msg.sender].tickets[_index] * tokensPerTicket[_index]);
 
+        require(
+            userInfos[msg.sender].noRefund[_index] == false,
+            "No refunds available"
+        );
+        userInfos[msg.sender].noRefund[_index] = true;
+        if (userInfos[msg.sender].tickets[_index] > 0)
+            buyerTokens[_index].safeTransfer(
+                msg.sender,
+                userInfos[msg.sender].tickets[_index] * tokensPerTicket[_index]
+            );
     }
 
-    
     function claim2() external nonReentrant {
         require(block.timestamp >= receiveTime, "not claimable yet");
-        require(userInfos[msg.sender].isClaimed == false, "no claims available");
-        
+        require(
+            userInfos[msg.sender].isClaimed == false,
+            "no claims available"
+        );
+
         uint256 a1 = userInfos[msg.sender].finalTokens;
-        
-        uint256 a2 = userInfos[msg.sender].finalEmissions;
-        require(a1 != 0 || a2 != 0, "no claims available");
-        
+
+        require(a1 != 0, "no claims available");
+
         userInfos[msg.sender].isClaimed = true;
-        userInfos[msg.sender].finalEmissions = 0;
-        
-        uint256 vesting = a1 * vestingProportion / 1e18;
-        
+
+        uint256 vesting = (a1 * vestingProportion) / 1e18;
+
         _grantVestedReward(msg.sender, vesting);
-        
-        salesToken.safeTransfer(msg.sender, a1 - vesting + a2);
-        emit Claim2(msg.sender, a1, a2);
+
+        salesToken.safeTransfer(msg.sender, a1 - vesting);
+        emit Claim2(msg.sender, a1);
     }
 
     function finish() external onlyOwner {
-        require(block.timestamp > endTime, "Can only finish after the sale has ended.");
+        require(
+            block.timestamp > endTime,
+            "Can only finish after the sale has ended."
+        );
         require(!finished, "Already finished.");
         finished = true;
-
-        
-        
-        for (uint i = 0; i < buyerTokens.length; ++i){
-            if (consumedTokens[i] > 0) IERC20(buyerTokens[i]).transfer(owner(), consumedTokens[i]);
+        uint tokensLength = buyerTokens.length;
+        for (uint i = 0; i < tokensLength; ++i) {
+            if (consumedTokens[i] > 0)
+                IERC20(buyerTokens[i]).safeTransfer(owner(), consumedTokens[i]);
         }
-        if (tokensToSell - tokensToUserGrant > 0){
-            salesToken.safeTransfer(burnAddress, tokensToSell - tokensToUserGrant);
+        if (tokensToSell - tokensToUserGrant > 0) {
+            salesToken.safeTransfer(
+                burnAddress,
+                tokensToSell + totalEmission - tokensToUserGrant
+            );
         }
-
     }
 
     function withdrawToken(
@@ -261,23 +335,28 @@ contract OverflowICO is Ownable(msg.sender), ReentrancyGuard, LinearVesting, Str
         uint256 _amount,
         address _to
     ) external onlyOwner {
-        require( _to != address(0), "Cant be zero address");
+        require(_to != address(0), "Cant be zero address");
         if (address(_token) == address(0)) {
-            payable(_to).transfer(_amount);
+            (bool success, ) = payable(_to).call{value: _amount}("");
+            require(success, "Ether transfer failed");
         } else {
             _token.safeTransfer(_to, _amount);
         }
-
     }
 
     function setResult(SetResultArgs[] memory _data) external onlyOwner {
-        for(uint i = 0; i < _data.length; ++i){
+        uint dataLength = _data.length;
+        uint tokensLength = buyerTokens.length;
+        for (uint i = 0; i < dataLength; ++i) {
             userInfos[_data[i].addr].finalTokens = _data[i].amount;
             userInfos[_data[i].addr].noRefund = _data[i].refundFlag;
             userInfos[_data[i].addr].hasWon = _data[i].refundFlag;
-            
-            for (uint j = 0; j < buyerTokens.length; ++j){
-                if (userInfos[_data[i].addr].tickets[j] > 0) consumedTokens[j] += userInfos[_data[i].addr].tickets[j] * tokensPerTicket[j];
+
+            for (uint j = 0; j < tokensLength; ++j) {
+                if (userInfos[_data[i].addr].tickets[j] > 0)
+                    consumedTokens[j] +=
+                        userInfos[_data[i].addr].tickets[j] *
+                        tokensPerTicket[j];
             }
             tokensToUserGrant += _data[i].amount;
         }
