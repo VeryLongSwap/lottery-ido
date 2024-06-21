@@ -209,6 +209,7 @@ contract OverflowICO is
             _newVestingProportion <= 1e18,
             "Vesting proportion must not exceed 100%"
         );
+        require(block.timestamp < vestBeginning, "already started vesting");
         vestingProportion = _newVestingProportion;
     }
 
