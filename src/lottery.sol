@@ -91,7 +91,6 @@ contract OverflowICO is
     IERC20[] public buyerTokens;
     IERC20 public immutable salesToken;
     uint256 public immutable tokensToSell;
-    uint256 public immutable totalEmission;
     uint256 public immutable startTime;
     uint256 public immutable endTime;
     uint256 public immutable receiveTime;
@@ -129,7 +128,6 @@ contract OverflowICO is
         uint256 _vestingDuration,
         uint256 _vestingProportion,
         uint256[] memory _tokensPerTicket,
-        uint256 _totalEmission,
         address _burnAddress
     ) LinearVesting(_salesToken, _vestingBegin, _vestingDuration) {
         require(
@@ -166,7 +164,6 @@ contract OverflowICO is
         endTime = _endTime;
         receiveTime = _receiveTime;
         tokensPerTicket = _tokensPerTicket;
-        totalEmission = _totalEmission;
         burnAddress = _burnAddress;
         vestingProportion = _vestingProportion;
     }
@@ -202,11 +199,7 @@ contract OverflowICO is
     function start() external onlyOwner {
         require(!started, "Already started.");
         started = true;
-        salesToken.safeTransferFrom(
-            msg.sender,
-            address(this),
-            tokensToSell + totalEmission
-        );
+        salesToken.safeTransferFrom(msg.sender, address(this), tokensToSell);
     }
 
     function updateVestingProportion(
@@ -325,7 +318,7 @@ contract OverflowICO is
         if (tokensToSell - tokensToUserGrant > 0) {
             salesToken.safeTransfer(
                 burnAddress,
-                tokensToSell + totalEmission - tokensToUserGrant
+                tokensToSell - tokensToUserGrant
             );
         }
     }
