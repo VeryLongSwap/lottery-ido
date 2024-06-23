@@ -14,9 +14,9 @@ contract CounterScript is Script {
 
     address public user = 0x0f7bF2e6BEbf3d352405B0f855d4B6fC6Fe50b3F;
     address public user2 = 0xDD47792c1A9f8F12a44c299f1be85FFD72A4B746;
-    uint public startTime = 1719021600;
+    uint public startTime = 1719113400;
     uint public endTime = startTime + 6000;
-    uint public tokensToSell = 5e18;
+    uint public tokensToSell = 5e22;
     address public dead = 0x000000000000000000000000000000000000dEaD;
 
     address public moti = 0x564d3De018dECF88f10e4F61CC988e7424faC912;
@@ -39,15 +39,13 @@ contract CounterScript is Script {
             tokensToSell,
             startTime,
             endTime,
-            endTime + 100,
+            endTime + 3000,
             0,
             0,
             0,
             tokensPerTickets,
-            0,
             dead
         );
-
         buyerTokens[0].approve(address(ido), type(uint256).max);
         buyerTokens[1].approve(address(ido), type(uint256).max);
         IERC20(address(USDC)).approve(address(ido), type(uint256).max);

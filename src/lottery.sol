@@ -6,7 +6,6 @@ import "openzeppelin-contracts/contracts/utils/ReentrancyGuard.sol";
 import "openzeppelin-contracts/contracts/token/ERC20/utils/SafeERC20.sol";
 import "openzeppelin-contracts/contracts/utils/cryptography/ECDSA.sol";
 import "openzeppelin-contracts/contracts/utils/math/Math.sol";
-import {Test, console} from "forge-std/Test.sol";
 
 interface Token {
     function decimals() external returns (uint);
@@ -17,13 +16,13 @@ contract StructList {
         uint256 finalTokens;
         bool[] noRefund;
         bool isClaimed;
-        bool[] hasWon;
+        uint256[] wonTickets;
     }
 
     struct SetResultArgs {
         address addr;
         uint256 amount;
-        bool[] refundFlag;
+        uint256[] wonTicketsAmount;
     }
 }
 contract LinearVesting is ReentrancyGuard {
@@ -108,7 +107,7 @@ contract OverflowICO is
 
     mapping(address => UserInfo) public userInfos;
 
-    event Commit(address indexed buyer, uint256 amount);
+    event Commit(address indexed buyer, address token, uint256 amount);
     event Claim(
         address indexed buyer,
         uint256 eth,
@@ -181,6 +180,7 @@ contract OverflowICO is
             IERC20[] memory,
             uint,
             uint,
+            uint,
             uint[] memory,
             uint,
             uint[] memory
@@ -190,6 +190,7 @@ contract OverflowICO is
             buyerTokens,
             startTime,
             endTime,
+            receiveTime,
             tokensPerTicket,
             tokensToSell,
             totalCommitments
@@ -240,19 +241,14 @@ contract OverflowICO is
             for (uint i = 0; i < tokensLength; ++i) {
                 userInfos[msg.sender].tickets.push(0);
                 userInfos[msg.sender].noRefund.push(false);
-                userInfos[msg.sender].hasWon.push(false);
+                userInfos[msg.sender].wonTickets.push(0);
             }
         }
 
         userInfos[msg.sender].tickets[_tokenIndex] += _amount;
         totalCommitments[_tokenIndex] += _amount * tokensPerTicket[_tokenIndex];
 
-        console.log(
-            userInfos[msg.sender].tickets[0],
-            userInfos[msg.sender].tickets[1]
-        );
-
-        emit Commit(msg.sender, _amount);
+        emit Commit(msg.sender, _token, _amount);
     }
 
     function _checkAvailableToken(
@@ -270,17 +266,20 @@ contract OverflowICO is
     function refund(uint _index) external nonReentrant {
         require(block.timestamp >= receiveTime, "not claimable yet");
         require(_index < buyerTokens.length, "invalid index");
-
         require(
-            userInfos[msg.sender].noRefund[_index] == false,
+            userInfos[msg.sender].noRefund[_index] == false &&
+                userInfos[msg.sender].tickets[_index] >
+                userInfos[msg.sender].wonTickets[_index],
             "No refunds available"
         );
         userInfos[msg.sender].noRefund[_index] = true;
-        if (userInfos[msg.sender].tickets[_index] > 0)
-            buyerTokens[_index].safeTransfer(
-                msg.sender,
-                userInfos[msg.sender].tickets[_index] * tokensPerTicket[_index]
-            );
+
+        buyerTokens[_index].safeTransfer(
+            msg.sender,
+            (userInfos[msg.sender].tickets[_index] -
+                userInfos[msg.sender].wonTickets[_index]) *
+                tokensPerTicket[_index]
+        );
     }
 
     function claim2() external nonReentrant {
@@ -343,13 +342,12 @@ contract OverflowICO is
         uint tokensLength = buyerTokens.length;
         for (uint i = 0; i < dataLength; ++i) {
             userInfos[_data[i].addr].finalTokens = _data[i].amount;
-            userInfos[_data[i].addr].noRefund = _data[i].refundFlag;
-            userInfos[_data[i].addr].hasWon = _data[i].refundFlag;
+            userInfos[_data[i].addr].wonTickets = _data[i].wonTicketsAmount;
 
             for (uint j = 0; j < tokensLength; ++j) {
                 if (userInfos[_data[i].addr].tickets[j] > 0)
                     consumedTokens[j] +=
-                        userInfos[_data[i].addr].tickets[j] *
+                        userInfos[_data[i].addr].wonTickets[j] *
                         tokensPerTicket[j];
             }
             tokensToUserGrant += _data[i].amount;
