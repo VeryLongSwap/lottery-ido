@@ -14,8 +14,8 @@ contract CounterScript is Script {
 
     address public user = 0x0f7bF2e6BEbf3d352405B0f855d4B6fC6Fe50b3F;
     address public user2 = 0xDD47792c1A9f8F12a44c299f1be85FFD72A4B746;
-    uint public startTime = 1719127800;
-    uint public endTime = startTime + 600;
+    uint public startTime = 1719142200;
+    uint public endTime = startTime + 3600;
     uint public tokensToSell = 5e22;
     address public dead = 0x000000000000000000000000000000000000dEaD;
 
@@ -39,7 +39,7 @@ contract CounterScript is Script {
             tokensToSell,
             startTime,
             endTime,
-            endTime + 300,
+            endTime + 1800,
             0,
             0,
             0,

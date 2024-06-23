@@ -314,7 +314,7 @@ contract LotteryIDO is
         _grantVestedReward(msg.sender, vesting);
 
         salesToken.safeTransfer(msg.sender, a1 - vesting);
-        emit Claim2(msg.sender, a1);
+        emit Claim2(msg.sender, a1 - vesting);
     }
 
     function finish() external onlyOwner {
