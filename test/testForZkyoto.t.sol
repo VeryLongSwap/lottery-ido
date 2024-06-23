@@ -2,14 +2,14 @@
 pragma solidity ^0.8.23;
 
 import {Test, console} from "forge-std/Test.sol";
-import {OverflowICO, StructList} from "../src/lottery.sol";
+import {LotteryIDO, StructList} from "../src/lottery.sol";
 import {WETH9} from "../src/WETH.sol";
 import "openzeppelin-contracts/contracts/token/ERC20/utils/SafeERC20.sol";
 
 contract CounterTest is Test, StructList {
     using SafeERC20 for IERC20;
 
-    OverflowICO public ido;
+    LotteryIDO public ido;
     WETH9 public salesToken;
     address public user = 0x0f7bF2e6BEbf3d352405B0f855d4B6fC6Fe50b3F;
     address public user2 = 0xDD47792c1A9f8F12a44c299f1be85FFD72A4B746;
@@ -40,7 +40,7 @@ contract CounterTest is Test, StructList {
         salesToken.transfer(address(this), 1e22);
         vm.stopPrank();
 
-        ido = new OverflowICO(
+        ido = new LotteryIDO(
             salesToken,
             buyerTokens,
             tokensToSell,

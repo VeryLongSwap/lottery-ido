@@ -23,7 +23,7 @@ contract StructList {
         uint256[] wonTicketsAmount;
     }
 }
-contract LinearVesting is ReentrancyGuard {
+contract Vesting is ReentrancyGuard {
     using SafeERC20 for IERC20;
 
     IERC20 public immutable rewardToken;
@@ -76,10 +76,10 @@ contract LinearVesting is ReentrancyGuard {
     }
 }
 
-contract OverflowICO is
+contract LotteryIDO is
     Ownable(msg.sender),
     ReentrancyGuard,
-    LinearVesting,
+    Vesting,
     StructList
 {
     using SafeERC20 for IERC20;
@@ -127,7 +127,7 @@ contract OverflowICO is
         uint256 _vestingProportion,
         uint256[] memory _tokensPerTicket,
         address _burnAddress
-    ) LinearVesting(_salesToken, _vestingBegin, _vestingDuration) {
+    ) Vesting(_salesToken, _vestingBegin, _vestingDuration) {
         require(
             _startTime >= block.timestamp,
             "Start time must be in the future."

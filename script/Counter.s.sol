@@ -2,13 +2,13 @@
 pragma solidity ^0.8.13;
 
 import {Script, console} from "forge-std/Script.sol";
-import {OverflowICO} from "../src/lottery.sol";
+import {LotteryIDO} from "../src/lottery.sol";
 import {ERC20} from "openzeppelin-contracts/contracts/token/ERC20/ERC20.sol";
 import {IERC20} from "openzeppelin-contracts/contracts/token/ERC20/IERC20.sol";
 
 contract CounterScript is Script {
-    OverflowICO public ido;
-    OverflowICO public ido2;
+    LotteryIDO public ido;
+    LotteryIDO public ido2;
     ERC20 public buyerToken;
     ERC20 public salesToken1;
 
@@ -33,7 +33,7 @@ contract CounterScript is Script {
         buyerTokens.push(IERC20(moti));
         buyerTokens.push(IERC20(isom));
 
-        ido = new OverflowICO(
+        ido = new LotteryIDO(
             IERC20(address(USDC)),
             buyerTokens,
             tokensToSell,
