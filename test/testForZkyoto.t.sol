@@ -18,8 +18,7 @@ contract CounterTest is Test, StructList {
 
     uint public startTime = 100000000000;
     uint public endTime = startTime + 1000;
-    uint public tokensToSell = 1e18;
-    uint public tokensToRaise = 1e18;
+    uint public tokensToSell = 3e18;
     address public dead = 0x000000000000000000000000000000000000dEaD;
 
     address public moti = 0x564d3De018dECF88f10e4F61CC988e7424faC912;
@@ -89,16 +88,17 @@ contract CounterTest is Test, StructList {
         assertEq(ido.totalCommitments(0), 2 * ido.tokensPerTicket(0));
         vm.stopPrank();
         SetResultArgs[] memory setResultArgs = new SetResultArgs[](1);
+        ido.setPrizeAmountPerTicket(0, 5e17);
+        ido.setPrizeAmountPerTicket(1, 1e18);
         uint[] memory wonTickets = new uint[](2);
         wonTickets[0] = 2;
         wonTickets[1] = 0;
-        setResultArgs[0] = SetResultArgs(user, 1e18, wonTickets);
+        setResultArgs[0] = SetResultArgs(user, wonTickets);
 
         ido.commit(3, address(buyerTokens[0]));
         ido.setResult(setResultArgs);
-        userInfo = ido.returnUserInfo(user);
 
-        assertEq(userInfo.finalTokens, 1e18);
+        assertEq(ido.checkClaimAmount(user), 1e18);
 
         vm.expectRevert("not claimable yet");
         ido.refund(0);
@@ -152,10 +152,12 @@ contract CounterTest is Test, StructList {
         vm.stopPrank();
 
         SetResultArgs[] memory setResultArgs = new SetResultArgs[](1);
+        ido.setPrizeAmountPerTicket(0, 5e17);
+        ido.setPrizeAmountPerTicket(1, 1e18);
         uint[] memory wonTickets = new uint[](2);
-        wonTickets[0] = 0;
+        wonTickets[0] = 2;
         wonTickets[1] = 0;
-        setResultArgs[0] = SetResultArgs(user, 1e18, wonTickets);
+        setResultArgs[0] = SetResultArgs(user, wonTickets);
 
         ido.commit(3, address(buyerTokens[0]));
         ido.setResult(setResultArgs);
@@ -167,7 +169,7 @@ contract CounterTest is Test, StructList {
         uint afterBuyerToken = buyerTokens[0].balanceOf(address(this));
 
         assertEq(
-            beforeBuyerToken + 0 * ido.tokensPerTicket(0),
+            beforeBuyerToken + 2 * ido.tokensPerTicket(0),
             afterBuyerToken
         );
 
@@ -175,7 +177,7 @@ contract CounterTest is Test, StructList {
 
         vm.prank(user);
         ido.claim2();
-
+        console.log("check");
         assertEq(beforeSalesToken + 1e18, salesToken.balanceOf(user));
 
         beforeBuyerToken = buyerTokens[0].balanceOf(address(this));
@@ -222,10 +224,12 @@ contract CounterTest is Test, StructList {
         assertEq(userInfo.tickets[1], 4);
 
         SetResultArgs[] memory setResultArgs = new SetResultArgs[](1);
+        ido.setPrizeAmountPerTicket(0, 5e17);
+        ido.setPrizeAmountPerTicket(1, 1e18);
         uint[] memory wonTickets = new uint[](2);
         wonTickets[0] = 2;
         wonTickets[1] = 2;
-        setResultArgs[0] = SetResultArgs(user, 1e18, wonTickets);
+        setResultArgs[0] = SetResultArgs(user, wonTickets);
 
         ido.setResult(setResultArgs);
 
@@ -250,7 +254,7 @@ contract CounterTest is Test, StructList {
 
         beforeValue = salesToken.balanceOf(user);
         ido.claim2();
-        assertEq(beforeValue + 1e18, salesToken.balanceOf(user));
+        assertEq(beforeValue + 3e18, salesToken.balanceOf(user));
         vm.expectRevert("no claims available");
         ido.claim2();
 

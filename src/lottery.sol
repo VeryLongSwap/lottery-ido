@@ -13,7 +13,6 @@ interface Token {
 contract StructList {
     struct UserInfo {
         uint256[] tickets;
-        uint256 finalTokens;
         bool[] noRefund;
         bool isClaimed;
         uint256[] wonTickets;
@@ -21,7 +20,6 @@ contract StructList {
 
     struct SetResultArgs {
         address addr;
-        uint256 amount;
         uint256[] wonTicketsAmount;
     }
 }
@@ -106,6 +104,7 @@ contract OverflowICO is
     uint256 public tokensToUserGrant;
 
     mapping(address => UserInfo) public userInfos;
+    uint256[] public prizeAmountPerTicket;
 
     event Commit(address indexed buyer, address token, uint256 amount);
     event Claim(
@@ -154,6 +153,7 @@ contract OverflowICO is
 
         totalCommitments = new uint[](_buyerTokens.length);
         consumedTokens = new uint[](_buyerTokens.length);
+        prizeAmountPerTicket = new uint[](_buyerTokens.length);
 
         buyerTokens = _buyerTokens;
         salesToken = _salesToken;
@@ -282,6 +282,15 @@ contract OverflowICO is
         );
     }
 
+    function checkClaimAmount(address _user) external view returns (uint) {
+        uint256 a1 = 0;
+        if (userInfos[msg.sender].isClaimed == true) return 0;
+        for (uint i = 0; i < buyerTokens.length; ++i) {
+            a1 += prizeAmountPerTicket[i] * userInfos[_user].wonTickets[i];
+        }
+        return a1;
+    }
+
     function claim2() external nonReentrant {
         require(block.timestamp >= receiveTime, "not claimable yet");
         require(
@@ -289,7 +298,10 @@ contract OverflowICO is
             "no claims available"
         );
 
-        uint256 a1 = userInfos[msg.sender].finalTokens;
+        uint256 a1 = 0;
+        for (uint i = 0; i < buyerTokens.length; ++i) {
+            a1 += prizeAmountPerTicket[i] * userInfos[msg.sender].wonTickets[i];
+        }
 
         require(a1 != 0, "no claims available");
 
@@ -337,20 +349,42 @@ contract OverflowICO is
         }
     }
 
+    function setPrizeAmountPerTicket(
+        uint _index,
+        uint _amount
+    ) external onlyOwner {
+        prizeAmountPerTicket[_index] = _amount;
+    }
+
     function setResult(SetResultArgs[] memory _data) external onlyOwner {
-        uint dataLength = _data.length;
         uint tokensLength = buyerTokens.length;
+
+        for (uint i = 0; i < tokensLength; ++i) {
+            require(
+                prizeAmountPerTicket[i] > 0,
+                "please set PrizeAmountPerTicket"
+            );
+        }
+
+        uint dataLength = _data.length;
+
         for (uint i = 0; i < dataLength; ++i) {
-            userInfos[_data[i].addr].finalTokens = _data[i].amount;
             userInfos[_data[i].addr].wonTickets = _data[i].wonTicketsAmount;
 
             for (uint j = 0; j < tokensLength; ++j) {
-                if (userInfos[_data[i].addr].tickets[j] > 0)
-                    consumedTokens[j] +=
-                        userInfos[_data[i].addr].wonTickets[j] *
-                        tokensPerTicket[j];
+                require(
+                    userInfos[_data[i].addr].tickets[j] >=
+                        userInfos[_data[i].addr].wonTickets[j],
+                    "over ticket amount"
+                );
+                consumedTokens[j] +=
+                    userInfos[_data[i].addr].wonTickets[j] *
+                    tokensPerTicket[j];
+
+                tokensToUserGrant +=
+                    userInfos[_data[i].addr].wonTickets[j] *
+                    prizeAmountPerTicket[j];
             }
-            tokensToUserGrant += _data[i].amount;
         }
         require(tokensToUserGrant <= tokensToSell, "over tokenAmount");
     }
