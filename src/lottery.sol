@@ -183,6 +183,7 @@ contract LotteryIDO is
             uint,
             uint[] memory,
             uint,
+            uint[] memory,
             uint[] memory
         )
     {
@@ -193,7 +194,8 @@ contract LotteryIDO is
             receiveTime,
             tokensPerTicket,
             tokensToSell,
-            totalCommitments
+            totalCommitments,
+            prizeAmountPerTicket
         );
     }
 
