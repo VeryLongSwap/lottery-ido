@@ -152,8 +152,8 @@ contract OverflowICO is Ownable(msg.sender), ReentrancyGuard, LinearVesting, Str
         return userInfos[_addr];
     }
 
-    function getStatus() external view returns (IERC20[] memory, uint, uint, uint, uint[] memory, uint, uint[] memory) {
-        return (buyerTokens, startTime, endTime, receiveTime, tokensPerTicket, tokensToSell, totalCommitments);
+    function getStatus() external view returns (IERC20[] memory, uint, uint, uint[] memory, uint, uint[] memory) {
+        return (buyerTokens, startTime, endTime, tokensPerTicket, tokensToSell, totalCommitments);
     }
 
     function updateVestingProportion(uint256 _newVestingProportion) external onlyOwner {
