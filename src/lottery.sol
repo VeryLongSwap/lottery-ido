@@ -19,13 +19,13 @@ contract StructList {
 
         bool[] noRefund;
         bool isClaimed;
-        bool[] hasWon;
+        uint256[] wonTickets;
     }
 
     struct SetResultArgs {
         address addr;
         uint256 amount;
-        bool[] refundFlag;
+        uint256[] wonTicketsAmount;
     }
 }
 contract LinearVesting is ReentrancyGuard {
@@ -98,7 +98,7 @@ contract OverflowICO is Ownable(msg.sender), ReentrancyGuard, LinearVesting, Str
 
     mapping(address => UserInfo) public userInfos;
 
-    event Commit(address indexed buyer, uint256 amount);
+    event Commit(address indexed buyer, address token, uint256 amount);
     event Claim(address indexed buyer, uint256 eth, uint256 token, uint256 emission);
     event Claim2(address indexed buyer, uint256 token, uint256 emission);
 
@@ -152,8 +152,8 @@ contract OverflowICO is Ownable(msg.sender), ReentrancyGuard, LinearVesting, Str
         return userInfos[_addr];
     }
 
-    function getStatus() external view returns (IERC20[] memory, uint, uint, uint[] memory, uint, uint[] memory) {
-        return (buyerTokens, startTime, endTime, tokensPerTicket, tokensToSell, totalCommitments);
+    function getStatus() external view returns (IERC20[] memory, uint, uint, uint, uint[] memory, uint, uint[] memory) {
+        return (buyerTokens, startTime, endTime, receiveTime, tokensPerTicket, tokensToSell, totalCommitments);
     }
 
     function updateVestingProportion(uint256 _newVestingProportion) external onlyOwner {
@@ -191,14 +191,14 @@ contract OverflowICO is Ownable(msg.sender), ReentrancyGuard, LinearVesting, Str
             for (uint i = 0; i < buyerTokens.length; ++i){
                 userInfos[msg.sender].tickets.push(0);
                 userInfos[msg.sender].noRefund.push(false);
-                userInfos[msg.sender].hasWon.push(false);
+                userInfos[msg.sender].wonTickets.push(0);
             }
         }
 
         userInfos[msg.sender].tickets[_tokenIndex] += _amount;
         totalCommitments[_tokenIndex] += _amount * tokensPerTicket[_tokenIndex];
 
-        emit Commit(msg.sender, _amount);
+        emit Commit(msg.sender, _token, _amount);
     }
 
     function _checkAvailableToken(address _token) internal view returns (bool, uint) {
@@ -215,10 +215,11 @@ contract OverflowICO is Ownable(msg.sender), ReentrancyGuard, LinearVesting, Str
         require(block.timestamp >= receiveTime, "not claimable yet");
         require(_index < buyerTokens.length, "invalid index");
         
-        require(userInfos[msg.sender].noRefund[_index] == false, "No refunds available");
+        require(userInfos[msg.sender].noRefund[_index] == false &&
+            userInfos[msg.sender].tickets[_index] >
+            userInfos[msg.sender].wonTickets[_index], "No refunds available");
         userInfos[msg.sender].noRefund[_index] = true;
-        if (userInfos[msg.sender].tickets[_index] > 0) buyerTokens[_index].safeTransfer(msg.sender, userInfos[msg.sender].tickets[_index] * tokensPerTicket[_index]);
-
+        buyerTokens[_index].safeTransfer(msg.sender, (userInfos[msg.sender].tickets[_index] - userInfos[msg.sender].wonTickets[_index]) * tokensPerTicket[_index]);
     }
 
     
@@ -278,11 +279,10 @@ contract OverflowICO is Ownable(msg.sender), ReentrancyGuard, LinearVesting, Str
         uint buyerTokensLength = buyerTokens.length;
         for(uint i = 0; i < dataLength; ++i){
             userInfos[_data[i].addr].finalTokens = _data[i].amount;
-            userInfos[_data[i].addr].noRefund = _data[i].refundFlag;
-            userInfos[_data[i].addr].hasWon = _data[i].refundFlag;
+            userInfos[_data[i].addr].wonTickets = _data[i].wonTicketsAmount;
             
             for (uint j = 0; j < buyerTokensLength; ++j){
-                if (userInfos[_data[i].addr].tickets[j] > 0) consumedTokens[j] += userInfos[_data[i].addr].tickets[j] * tokensPerTicket[j];
+                if (userInfos[_data[i].addr].tickets[j] > 0) consumedTokens[j] += userInfos[_data[i].addr].wonTickets[j] * tokensPerTicket[j];
             }
             tokensToUserGrant += _data[i].amount;
         }
