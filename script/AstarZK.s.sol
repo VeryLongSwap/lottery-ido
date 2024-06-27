@@ -7,9 +7,18 @@ import { ERC20 } from "openzeppelin-contracts/contracts/token/ERC20/ERC20.sol";
 import { IERC20 } from "openzeppelin-contracts/contracts/token/ERC20/IERC20.sol";
 
 contract IDOStart is Script {
+    address public USDC = 0xA8CE8aee21bC2A48a5EF670afCc9274C7bbbC035;
+    address public BONSAI = 0xcE3F71Af1A80390cAb3f429B30567cBE0E853f4d;
+    OverflowICO public ido = OverflowICO(0xebA55284dA75BbAd9e00d112D468Ee7e3aab3799);
+
+
     function run() public {
         vm.startBroadcast();
         console.log("IDO Started");
+        IERC20(USDC).approve(address(ido), type(uint256).max);
+        IERC20(address(BONSAI)).approve(address(ido), type(uint256).max);
+        ido.start();
+
         vm.stopBroadcast();
     }
 }
@@ -17,7 +26,6 @@ contract IDOStart is Script {
 contract Deploy is Script {
     OverflowICO public ido;
     ERC20 public buyerToken;
-    ERC20 public salesToken1;
     
     uint public startTime = 1719608400;
     uint public endTime = 1719651600;
