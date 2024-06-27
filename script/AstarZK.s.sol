@@ -6,6 +6,14 @@ import { OverflowICO } from "../src/lottery.sol";
 import { ERC20 } from "openzeppelin-contracts/contracts/token/ERC20/ERC20.sol";
 import { IERC20 } from "openzeppelin-contracts/contracts/token/ERC20/IERC20.sol";
 
+contract IDOStart is Script {
+    function run() public {
+        vm.startBroadcast();
+        console.log("IDO Started");
+        vm.stopBroadcast();
+    }
+}
+
 contract Deploy is Script {
     OverflowICO public ido;
     ERC20 public buyerToken;
@@ -26,7 +34,7 @@ contract Deploy is Script {
 
     function run() public {
         vm.startBroadcast();
-        buyerTokens.push(IERC20(BONSAI));
+        buyerTokens.push(IERC20(USDC));
 
 
         // Ensure USDC contract exists and has code
@@ -34,12 +42,12 @@ contract Deploy is Script {
 
 
         ido = new OverflowICO(
-            IERC20(address(USDC)),
+            IERC20(address(BONSAI)),
             buyerTokens,
             tokensToSell,
             startTime,
             endTime,
-            endTime + 100,
+            endTime + 1000,
             0,
             0,
             0,
