@@ -27,8 +27,8 @@ contract Deploy is Script {
     OverflowICO public ido;
     ERC20 public buyerToken;
 
-    uint public startTime = 1719608400;
-    uint public endTime = 1719651600;
+    uint public startTime = 1719478800;
+    uint public endTime = 1719536400;
     uint public tokensToSell = 1e18;
     address public dead = 0x000000000000000000000000000000000000dEaD;
 
