@@ -10,7 +10,7 @@ contract IDOStart is Script {
     address public USDC = 0xA8CE8aee21bC2A48a5EF670afCc9274C7bbbC035;
     address public BONSAI = 0xcE3F71Af1A80390cAb3f429B30567cBE0E853f4d;
     OverflowICO public ido =
-        OverflowICO(0x440b4eE171f175cA0eF03bd37E3fbeD46Ae09FC6);
+        OverflowICO(0xc731958B9E93Fa65599C3A5DBfCeB0916DCD4980);
 
     function run() public {
         vm.startBroadcast();
@@ -27,7 +27,7 @@ contract Deploy is Script {
     OverflowICO public ido;
     ERC20 public buyerToken;
 
-    uint public startTime = 1719478800;
+    uint public startTime = 1719486800;
     uint public endTime = 1719536400;
     uint public tokensToSell = 1e18;
     address public dead = 0x000000000000000000000000000000000000dEaD;
