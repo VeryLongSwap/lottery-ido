@@ -8,9 +8,9 @@ import {IERC20} from "openzeppelin-contracts/contracts/token/ERC20/IERC20.sol";
 
 contract IDOStart is Script {
     address public USDC = 0xA8CE8aee21bC2A48a5EF670afCc9274C7bbbC035;
-    address public BONSAI = 0xcE3F71Af1A80390cAb3f429B30567cBE0E853f4d;
+    address public BONSAI = 0x90E3F8e749dBD40286AB29AecD1E8487Db4a8785;
     OverflowICO public ido =
-        OverflowICO(0xc731958B9E93Fa65599C3A5DBfCeB0916DCD4980);
+        OverflowICO(0x395D4ad692cF61c9324F528aF191b2B8d2eA0d58);
 
     function run() public {
         vm.startBroadcast();
@@ -27,14 +27,15 @@ contract Deploy is Script {
     OverflowICO public ido;
     ERC20 public buyerToken;
 
-    uint public startTime = 1719486800;
-    uint public endTime = 1719536400;
-    uint public tokensToSell = 1e18;
+    uint public startTime = 1719799198;
+    uint public endTime = 1720580400;
+    uint public claimTime = 1720774800;
+    uint public tokensToSell = 8031000000000 * 1e18;
     address public dead = 0x000000000000000000000000000000000000dEaD;
 
     address public USDC = 0xA8CE8aee21bC2A48a5EF670afCc9274C7bbbC035;
     address deployer = 0x944C6C8882012CcD4FFd2911a7F1fDC520c9a561;
-    address public BONSAI = 0xcE3F71Af1A80390cAb3f429B30567cBE0E853f4d;
+    address public BONSAI = 0x90E3F8e749dBD40286AB29AecD1E8487Db4a8785;
 
     IERC20[] public buyerTokens;
     uint[] public tokensPerTickets = [10 * 1e6];
@@ -52,7 +53,7 @@ contract Deploy is Script {
             tokensToSell,
             startTime,
             endTime,
-            endTime + 1000,
+            claimTime,
             0,
             0,
             0,

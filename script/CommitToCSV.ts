@@ -3,6 +3,7 @@ import * as fs from 'fs';
 interface AddressData {
   address: string;
   amount: string;
+  staking: string;
 }
 
 function convertJsonToCsv(inputFile: string, outputFile: string): void {
@@ -11,11 +12,11 @@ function convertJsonToCsv(inputFile: string, outputFile: string): void {
   const data: AddressData[] = JSON.parse(jsonData);
 
   // CSVヘッダーを作成
-  const csvHeader = 'address,amount\n';
+  const csvHeader = 'address,amount,staking\n';
 
   // データ行を作成
   const csvRows = data.map(row =>
-    `${row.address},${row.amount}`
+    `${row.address},${row.amount}, ${row.staking}`
   ).join('\n');
 
   // CSVデータを作成
@@ -28,6 +29,6 @@ function convertJsonToCsv(inputFile: string, outputFile: string): void {
 }
 
 // 使用例
-const inputFile = 'commit.json';
+const inputFile = 'result.json';
 const outputFile = 'commit.csv';
 convertJsonToCsv(inputFile, outputFile);
