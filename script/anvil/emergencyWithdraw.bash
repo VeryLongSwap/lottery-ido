@@ -1,0 +1,5 @@
+cast send 0x395D4ad692cF61c9324F528aF191b2B8d2eA0d58 "withdrawToken(address,uint256,address)" \
+"0xA8CE8aee21bC2A48a5EF670afCc9274C7bbbC035" \
+124570000000 \
+"0xCEA525eE12e751379e3B0e8fE4a737E8A8d15622" \
+--private-key $PRIVATE_KEY --rpc-url http://127.0.0.1:8545
