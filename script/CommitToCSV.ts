@@ -29,6 +29,6 @@ function convertJsonToCsv(inputFile: string, outputFile: string): void {
 }
 
 // 使用例
-const inputFile = 'result.json';
+const inputFile = 'result0709.json';
 const outputFile = 'commit.csv';
 convertJsonToCsv(inputFile, outputFile);

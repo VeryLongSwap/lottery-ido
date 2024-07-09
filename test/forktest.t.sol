@@ -47,7 +47,7 @@ contract ForkTest is Test, StructList {
         assertEq(block.number, blocknumber);
         assertEq(address(ido), 0x395D4ad692cF61c9324F528aF191b2B8d2eA0d58);
         assertEq(ido.owner(), owner);
-        assertEq(USDC.balanceOf(address(ido)), 135230000000);
+        assertEq(USDC.balanceOf(address(ido)), 141600000000);
     }
 
     function testWithdraw() public {

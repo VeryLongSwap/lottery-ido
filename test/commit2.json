@@ -1,51 +1,27 @@
 [
   {
-    "address": "0xCEA525eE12e751379e3B0e8fE4a737E8A8d15622",
-    "wonTickets": 2,
-    "finalTokens": 8031000000,
-    "amountUSDC": 30,
-    "wonUSDC": 20,
-    "returnUSDC": 10
-  },
-  {
-    "address": "0x0f7bF2e6BEbf3d352405B0f855d4B6fC6Fe50b3F",
-    "wonTickets": 1,
-    "finalTokens": 4015500000,
-    "amountUSDC": 30,
-    "wonUSDC": 10,
-    "returnUSDC": 20
-  },
-  {
     "address": "0xbB7eb80b94F6a7ACd7FF7966606e34fB2725C229",
-    "wonTickets": 437,
-    "finalTokens": 1754773500000,
+    "wonTickets": 270,
+    "finalTokens": 1084185000000,
     "amountUSDC": 20000,
-    "wonUSDC": 4370,
-    "returnUSDC": 15630
-  },
-  {
-    "address": "0x944C6C8882012CcD4FFd2911a7F1fDC520c9a561",
-    "wonTickets": 1,
-    "finalTokens": 4015500000,
-    "amountUSDC": 10,
-    "wonUSDC": 10,
-    "returnUSDC": 0
+    "wonUSDC": 2700,
+    "returnUSDC": 17300
   },
   {
     "address": "0x34FeE623474A202143aDD25602f531Be0Fbe5458",
-    "wonTickets": 20,
-    "finalTokens": 80310000000,
+    "wonTickets": 6,
+    "finalTokens": 24093000000,
     "amountUSDC": 800,
-    "wonUSDC": 200,
-    "returnUSDC": 600
+    "wonUSDC": 60,
+    "returnUSDC": 740
   },
   {
     "address": "0xaF7CCDd3a690EF9bF55c9C4e522f4429cc85f392",
-    "wonTickets": 3,
-    "finalTokens": 12046500000,
+    "wonTickets": 2,
+    "finalTokens": 8031000000,
     "amountUSDC": 100,
-    "wonUSDC": 30,
-    "returnUSDC": 70
+    "wonUSDC": 20,
+    "returnUSDC": 80
   },
   {
     "address": "0x45de1c3b41596224C51C66FC286aA5B363511DCb",
@@ -54,14 +30,6 @@
     "amountUSDC": 30,
     "wonUSDC": 10,
     "returnUSDC": 20
-  },
-  {
-    "address": "0x23198cBf617e8003E6B9d888fefc9F22DFFeAfa9",
-    "wonTickets": 1,
-    "finalTokens": 4015500000,
-    "amountUSDC": 50,
-    "wonUSDC": 10,
-    "returnUSDC": 40
   },
   {
     "address": "0x61EC94F740707F8cE243b80F765A2b95196f1c5A",
@@ -73,19 +41,19 @@
   },
   {
     "address": "0x4815366bB6f74796173c8Bea057B5919810138a6",
-    "wonTickets": 25,
-    "finalTokens": 100387500000,
+    "wonTickets": 21,
+    "finalTokens": 84325500000,
     "amountUSDC": 980,
-    "wonUSDC": 250,
-    "returnUSDC": 730
+    "wonUSDC": 210,
+    "returnUSDC": 770
   },
   {
     "address": "0xC8b122195f3657578A4705721633308A4264ae8A",
-    "wonTickets": 2,
-    "finalTokens": 8031000000,
+    "wonTickets": 1,
+    "finalTokens": 4015500000,
     "amountUSDC": 170,
-    "wonUSDC": 20,
-    "returnUSDC": 150
+    "wonUSDC": 10,
+    "returnUSDC": 160
   },
   {
     "address": "0x3125eD60Dd85E43383e369bBf9b4DE68100B9bA1",
@@ -96,36 +64,36 @@
     "returnUSDC": 60
   },
   {
-    "address": "0x1dEc530a07c8f1C16BEF63B763A99407835c2C25",
-    "wonTickets": 10,
-    "finalTokens": 40155000000,
-    "amountUSDC": 200,
-    "wonUSDC": 100,
-    "returnUSDC": 100
+    "address": "0x6271d199AF035Dc791d00feb62FbA4cb5C3D2b31",
+    "wonTickets": 2,
+    "finalTokens": 8031000000,
+    "amountUSDC": 70,
+    "wonUSDC": 20,
+    "returnUSDC": 50
   },
   {
     "address": "0x95F1946634F3F819E4b3Fd61559CB2187dE29e27",
-    "wonTickets": 37,
-    "finalTokens": 148573500000,
+    "wonTickets": 18,
+    "finalTokens": 72279000000,
     "amountUSDC": 1120,
-    "wonUSDC": 370,
-    "returnUSDC": 750
+    "wonUSDC": 180,
+    "returnUSDC": 940
   },
   {
     "address": "0xb8D32a1508830AB845be35D0095b54430F269559",
-    "wonTickets": 3,
-    "finalTokens": 12046500000,
+    "wonTickets": 6,
+    "finalTokens": 24093000000,
     "amountUSDC": 380,
-    "wonUSDC": 30,
-    "returnUSDC": 350
+    "wonUSDC": 60,
+    "returnUSDC": 320
   },
   {
     "address": "0x3A9272b13D3D262bB7944f2e5c1FEe681aF4B247",
-    "wonTickets": 15,
-    "finalTokens": 60232500000,
-    "amountUSDC": 500,
-    "wonUSDC": 150,
-    "returnUSDC": 350
+    "wonTickets": 25,
+    "finalTokens": 100387500000,
+    "amountUSDC": 1740,
+    "wonUSDC": 250,
+    "returnUSDC": 1490
   },
   {
     "address": "0x5140CEB53a00dB80C3F094fB312fa91fa44fAaf3",
@@ -145,114 +113,98 @@
   },
   {
     "address": "0xa144E2a63d20A653eE10B7aeA763b23C77ef60c6",
-    "wonTickets": 3,
-    "finalTokens": 12046500000,
-    "amountUSDC": 80,
-    "wonUSDC": 30,
-    "returnUSDC": 50
-  },
-  {
-    "address": "0x08b35d6cffFF52e3D619140Ad88ED43d9C6e66D8",
     "wonTickets": 2,
     "finalTokens": 8031000000,
-    "amountUSDC": 50,
+    "amountUSDC": 80,
     "wonUSDC": 20,
-    "returnUSDC": 30
+    "returnUSDC": 60
   },
   {
     "address": "0x1b68DdDb49D763DAA012e164DE0359fC046aD8aF",
-    "wonTickets": 1,
-    "finalTokens": 4015500000,
+    "wonTickets": 2,
+    "finalTokens": 8031000000,
     "amountUSDC": 80,
-    "wonUSDC": 10,
-    "returnUSDC": 70
+    "wonUSDC": 20,
+    "returnUSDC": 60
   },
   {
     "address": "0x147B413E89251C5c4F0cc2b3b5Ca315Ea5137b8a",
     "wonTickets": 1,
     "finalTokens": 4015500000,
-    "amountUSDC": 70,
+    "amountUSDC": 90,
     "wonUSDC": 10,
-    "returnUSDC": 60
+    "returnUSDC": 80
   },
   {
     "address": "0x1407A78Eda9d3de8A9E5f40636660fBe20920f15",
-    "wonTickets": 2,
-    "finalTokens": 8031000000,
-    "amountUSDC": 90,
-    "wonUSDC": 20,
-    "returnUSDC": 70
-  },
-  {
-    "address": "0xB98A815B3D0aF4D99e9D05DF7Bfbeb17e47F5eD6",
     "wonTickets": 1,
     "finalTokens": 4015500000,
-    "amountUSDC": 20,
+    "amountUSDC": 90,
     "wonUSDC": 10,
-    "returnUSDC": 10
+    "returnUSDC": 80
   },
   {
     "address": "0xA3a94A0CAFBe7074afbca75Df64666A6E2DADAc0",
-    "wonTickets": 80,
-    "finalTokens": 321240000000,
-    "amountUSDC": 3580,
-    "wonUSDC": 800,
-    "returnUSDC": 2780
+    "wonTickets": 92,
+    "finalTokens": 369426000000,
+    "amountUSDC": 6550,
+    "wonUSDC": 920,
+    "returnUSDC": 5630
   },
   {
     "address": "0xd7e7e3c613758099702b8feDD444Be85C16C0E1C",
-    "wonTickets": 65,
-    "finalTokens": 261007500000,
+    "wonTickets": 42,
+    "finalTokens": 168651000000,
     "amountUSDC": 3000,
-    "wonUSDC": 650,
-    "returnUSDC": 2350
+    "wonUSDC": 420,
+    "returnUSDC": 2580
   },
   {
     "address": "0x417487275239E0f6c5AC79f5D60135eCf118169b",
-    "wonTickets": 8,
-    "finalTokens": 32124000000,
-    "amountUSDC": 300,
-    "wonUSDC": 80,
-    "returnUSDC": 220
+    "wonTickets": 10,
+    "finalTokens": 40155000000,
+    "amountUSDC": 900,
+    "wonUSDC": 100,
+    "returnUSDC": 800
   },
   {
     "address": "0x27a7A3355D2D51F413D7d73e069A17cB106f13Be",
-    "wonTickets": 29,
-    "finalTokens": 116449500000,
+    "wonTickets": 26,
+    "finalTokens": 104403000000,
     "amountUSDC": 1620,
-    "wonUSDC": 290,
-    "returnUSDC": 1330
+    "wonUSDC": 260,
+    "returnUSDC": 1360
   },
   {
     "address": "0x8cB1F920e437791A97443cC81b62476120D30e40",
-    "wonTickets": 5,
-    "finalTokens": 20077500000,
+    "wonTickets": 10,
+    "finalTokens": 40155000000,
     "amountUSDC": 340,
-    "wonUSDC": 50,
-    "returnUSDC": 290
+    "wonUSDC": 100,
+    "returnUSDC": 240
   },
   {
     "address": "0x705DB10C7446f3FE3F27DF8C9CE420144AA2eAFA",
-    "wonTickets": 12,
-    "finalTokens": 48186000000,
+    "wonTickets": 3,
+    "finalTokens": 12046500000,
     "amountUSDC": 400,
-    "wonUSDC": 120,
-    "returnUSDC": 280
+    "wonUSDC": 30,
+    "returnUSDC": 370
   },
   {
     "address": "0x2BB43FF4663a4209e66222F2320537B4bfdcB693",
-    "wonTickets": 3,
-    "finalTokens": 12046500000,
-    "amountUSDC": 140,
-    "wonUSDC": 30,
-    "returnUSDC": 110
-  },
-  {
-    "address": "0xc1D9c776Ef4BA56026bB47F16e36C6A4bdAB7d9E",
     "wonTickets": 1,
     "finalTokens": 4015500000,
-    "amountUSDC": 50,
+    "amountUSDC": 140,
     "wonUSDC": 10,
+    "returnUSDC": 130
+  },
+  {
+    "address": "0x49eF397534F6299e0A8FeE75Bc16F09726E11ef2",
+    "wonTickets": 2,
+    "finalTokens": 8031000000,
+    "amountUSDC": 60,
+    "wonUSDC": 20,
     "returnUSDC": 40
   },
   {
@@ -272,6 +224,14 @@
     "returnUSDC": 10
   },
   {
+    "address": "0x1f700588DA5980005b1fF37f60b965EC5AaDd11a",
+    "wonTickets": 1,
+    "finalTokens": 4015500000,
+    "amountUSDC": 10,
+    "wonUSDC": 10,
+    "returnUSDC": 0
+  },
+  {
     "address": "0xca5F55Dc12F2e44194F07eFB9cf62ae3b7c114F8",
     "wonTickets": 1,
     "finalTokens": 4015500000,
@@ -281,19 +241,11 @@
   },
   {
     "address": "0xe39c9fDc2145eE5bB7CF02A4BB7aBb411685d980",
-    "wonTickets": 4,
-    "finalTokens": 16062000000,
+    "wonTickets": 11,
+    "finalTokens": 44170500000,
     "amountUSDC": 340,
-    "wonUSDC": 40,
-    "returnUSDC": 300
-  },
-  {
-    "address": "0xcD29a73e18395ad3f682e641121D8b28b410229b",
-    "wonTickets": 1,
-    "finalTokens": 4015500000,
-    "amountUSDC": 10,
-    "wonUSDC": 10,
-    "returnUSDC": 0
+    "wonUSDC": 110,
+    "returnUSDC": 230
   },
   {
     "address": "0x41089B971D22ed2be9E0Dabb7Da3b5A702B737f5",
@@ -305,75 +257,75 @@
   },
   {
     "address": "0x75B555ea9fb26f78E8014805DFA49E2AFb7b9778",
-    "wonTickets": 2,
-    "finalTokens": 8031000000,
+    "wonTickets": 1,
+    "finalTokens": 4015500000,
     "amountUSDC": 20,
-    "wonUSDC": 20,
-    "returnUSDC": 0
+    "wonUSDC": 10,
+    "returnUSDC": 10
   },
   {
     "address": "0x8F5ef19b7e71F85ff7D09C6a33bfd0e5D86df9A6",
-    "wonTickets": 22,
-    "finalTokens": 88341000000,
+    "wonTickets": 11,
+    "finalTokens": 44170500000,
     "amountUSDC": 1000,
-    "wonUSDC": 220,
-    "returnUSDC": 780
+    "wonUSDC": 110,
+    "returnUSDC": 890
   },
   {
     "address": "0xE61EcC646799Bb74405E676656C0F6300D0ab999",
-    "wonTickets": 22,
-    "finalTokens": 88341000000,
+    "wonTickets": 10,
+    "finalTokens": 40155000000,
     "amountUSDC": 1000,
-    "wonUSDC": 220,
-    "returnUSDC": 780
+    "wonUSDC": 100,
+    "returnUSDC": 900
   },
   {
     "address": "0xdE54139d9592128EE73B5F8f72e8d0A8DCAA5191",
-    "wonTickets": 3,
-    "finalTokens": 12046500000,
+    "wonTickets": 2,
+    "finalTokens": 8031000000,
     "amountUSDC": 50,
-    "wonUSDC": 30,
-    "returnUSDC": 20
+    "wonUSDC": 20,
+    "returnUSDC": 30
   },
   {
     "address": "0x7990bD07f6AFA5004bb1ea3e09e4DBEA32a76cda",
-    "wonTickets": 4,
-    "finalTokens": 16062000000,
+    "wonTickets": 2,
+    "finalTokens": 8031000000,
     "amountUSDC": 100,
-    "wonUSDC": 40,
-    "returnUSDC": 60
+    "wonUSDC": 20,
+    "returnUSDC": 80
   },
   {
     "address": "0x9C053Cda1fe2a8A44149319954B17203383Ea9F0",
-    "wonTickets": 9,
-    "finalTokens": 36139500000,
+    "wonTickets": 8,
+    "finalTokens": 32124000000,
     "amountUSDC": 510,
-    "wonUSDC": 90,
-    "returnUSDC": 420
+    "wonUSDC": 80,
+    "returnUSDC": 430
   },
   {
     "address": "0x1FDA16d5111f639D20ac78b31742b152729b421F",
-    "wonTickets": 8,
-    "finalTokens": 32124000000,
+    "wonTickets": 2,
+    "finalTokens": 8031000000,
     "amountUSDC": 280,
-    "wonUSDC": 80,
-    "returnUSDC": 200
+    "wonUSDC": 20,
+    "returnUSDC": 260
   },
   {
     "address": "0xc3E2Fca92fb40f53A4a92994CB9cbA6e33EE0148",
-    "wonTickets": 23,
-    "finalTokens": 92356500000,
+    "wonTickets": 8,
+    "finalTokens": 32124000000,
     "amountUSDC": 990,
-    "wonUSDC": 230,
-    "returnUSDC": 760
+    "wonUSDC": 80,
+    "returnUSDC": 910
   },
   {
     "address": "0xf71c90eF0314fE4DB2B2eE1921294dF6273769F8",
-    "wonTickets": 8,
-    "finalTokens": 32124000000,
+    "wonTickets": 7,
+    "finalTokens": 28108500000,
     "amountUSDC": 200,
-    "wonUSDC": 80,
-    "returnUSDC": 120
+    "wonUSDC": 70,
+    "returnUSDC": 130
   },
   {
     "address": "0xd94DBE4cb4c924B997aD244Af2Ea458B371E1997",
@@ -384,20 +336,20 @@
     "returnUSDC": 20
   },
   {
-    "address": "0x095d2C4D5C9412a647EBC52Afc10ab021aE51Aa3",
+    "address": "0x75F5ECFDef355670F110D56A29eAb4CCaEBb6a4d",
     "wonTickets": 1,
     "finalTokens": 4015500000,
-    "amountUSDC": 10,
+    "amountUSDC": 60,
     "wonUSDC": 10,
-    "returnUSDC": 0
+    "returnUSDC": 50
   },
   {
     "address": "0x70F6B77D6B75A5e64551760E069cB5FbD1A634Bd",
-    "wonTickets": 1,
-    "finalTokens": 4015500000,
+    "wonTickets": 2,
+    "finalTokens": 8031000000,
     "amountUSDC": 90,
-    "wonUSDC": 10,
-    "returnUSDC": 80
+    "wonUSDC": 20,
+    "returnUSDC": 70
   },
   {
     "address": "0x119A468dea5FA18E676587a6cF8E0Cb4898cBAb9",
@@ -406,14 +358,6 @@
     "amountUSDC": 100,
     "wonUSDC": 30,
     "returnUSDC": 70
-  },
-  {
-    "address": "0xF4b0d517f671A01dc90dFBA3c4402B117b0A7ADd",
-    "wonTickets": 1,
-    "finalTokens": 4015500000,
-    "amountUSDC": 20,
-    "wonUSDC": 10,
-    "returnUSDC": 10
   },
   {
     "address": "0xebCA732d7d2a09Ab8A2D1E9AF10da88f70c15a09",
@@ -425,155 +369,131 @@
   },
   {
     "address": "0x6C706335e2AE648B084985E14ad5Fb2A11005168",
-    "wonTickets": 9,
-    "finalTokens": 36139500000,
+    "wonTickets": 3,
+    "finalTokens": 12046500000,
     "amountUSDC": 330,
-    "wonUSDC": 90,
-    "returnUSDC": 240
-  },
-  {
-    "address": "0x9d06a4934772ec9F8019e4849D4F98fe0836deE4",
-    "wonTickets": 10,
-    "finalTokens": 40155000000,
-    "amountUSDC": 470,
-    "wonUSDC": 100,
-    "returnUSDC": 370
-  },
-  {
-    "address": "0x596Ac523A2F887D44BA69d3144A17b7def627aF8",
-    "wonTickets": 9,
-    "finalTokens": 36139500000,
-    "amountUSDC": 160,
-    "wonUSDC": 90,
-    "returnUSDC": 70
-  },
-  {
-    "address": "0x96c4c9CD98eB02ba00F2731e4ffB965Fa2A41923",
-    "wonTickets": 420,
-    "finalTokens": 1686510000000,
-    "amountUSDC": 20000,
-    "wonUSDC": 4200,
-    "returnUSDC": 15800
-  },
-  {
-    "address": "0x16c5100CF9543C62f0f4943e434442790bC82783",
-    "wonTickets": 1,
-    "finalTokens": 4015500000,
-    "amountUSDC": 20,
-    "wonUSDC": 10,
-    "returnUSDC": 10
-  },
-  {
-    "address": "0xB82d5544Eb467Cf2FbbcC3882b0a4847B5fBc8e9",
-    "wonTickets": 17,
-    "finalTokens": 68263500000,
-    "amountUSDC": 780,
-    "wonUSDC": 170,
-    "returnUSDC": 610
-  },
-  {
-    "address": "0xaeAf014cF88Edc5d666077D7c017D19A44F74505",
-    "wonTickets": 5,
-    "finalTokens": 20077500000,
-    "amountUSDC": 150,
-    "wonUSDC": 50,
-    "returnUSDC": 100
-  },
-  {
-    "address": "0x2dB391D6449AcE0f6008B587321A1CFd9C7b2879",
-    "wonTickets": 68,
-    "finalTokens": 273054000000,
-    "amountUSDC": 3260,
-    "wonUSDC": 680,
-    "returnUSDC": 2580
-  },
-  {
-    "address": "0xff12faF1b14b3Bd54268f9D23D243F36b2CC8a94",
-    "wonTickets": 10,
-    "finalTokens": 40155000000,
-    "amountUSDC": 400,
-    "wonUSDC": 100,
+    "wonUSDC": 30,
     "returnUSDC": 300
   },
   {
-    "address": "0x777a083B510023f37417209B8F9D8E23fD4A3ba3",
-    "wonTickets": 1,
-    "finalTokens": 4015500000,
-    "amountUSDC": 20,
-    "wonUSDC": 10,
-    "returnUSDC": 10
-  },
-  {
-    "address": "0xf17fad1fC969136311150d06791E6Ce891E25277",
-    "wonTickets": 1,
-    "finalTokens": 4015500000,
-    "amountUSDC": 60,
-    "wonUSDC": 10,
-    "returnUSDC": 50
-  },
-  {
-    "address": "0x837Ea8C791379BD69a1a85C5Db08c9cac233aC6B",
-    "wonTickets": 2,
-    "finalTokens": 8031000000,
-    "amountUSDC": 100,
-    "wonUSDC": 20,
-    "returnUSDC": 80
-  },
-  {
-    "address": "0x27F1Ca84C17150af7FACE5054a6A2670A75ed060",
-    "wonTickets": 2,
-    "finalTokens": 8031000000,
-    "amountUSDC": 40,
-    "wonUSDC": 20,
-    "returnUSDC": 20
-  },
-  {
-    "address": "0x57a20209A18185F982F5f883502d8EB499900303",
-    "wonTickets": 3,
-    "finalTokens": 12046500000,
-    "amountUSDC": 50,
-    "wonUSDC": 30,
-    "returnUSDC": 20
-  },
-  {
-    "address": "0xa9D46DB44B21B34f8Dbc0fc6d8C4CBDa01E1Fc2A",
-    "wonTickets": 2,
-    "finalTokens": 8031000000,
-    "amountUSDC": 100,
-    "wonUSDC": 20,
-    "returnUSDC": 80
-  },
-  {
-    "address": "0xC61618aF68eB5F870c05eF8a371DEbB4bEDEA3BD",
-    "wonTickets": 3,
-    "finalTokens": 12046500000,
-    "amountUSDC": 90,
-    "wonUSDC": 30,
-    "returnUSDC": 60
-  },
-  {
-    "address": "0x46Ffbe229d5971585584DB39CCA44916861c74C9",
-    "wonTickets": 2,
-    "finalTokens": 8031000000,
-    "amountUSDC": 50,
-    "wonUSDC": 20,
-    "returnUSDC": 30
-  },
-  {
-    "address": "0xB8C53FDB2ED1Ef8a7107918bD4B22Ee1e07e3841",
+    "address": "0x9d06a4934772ec9F8019e4849D4F98fe0836deE4",
     "wonTickets": 8,
     "finalTokens": 32124000000,
-    "amountUSDC": 300,
+    "amountUSDC": 470,
     "wonUSDC": 80,
-    "returnUSDC": 220
+    "returnUSDC": 390
   },
   {
-    "address": "0xdC2a26dA62eC880a137BD336315464bc78C2698A",
+    "address": "0x3E61DFfa0bC323Eaa16F4C982F96FEB89ab89E8a",
     "wonTickets": 1,
     "finalTokens": 4015500000,
     "amountUSDC": 30,
     "wonUSDC": 10,
     "returnUSDC": 20
+  },
+  {
+    "address": "0x3b0bBa8DFC29e303d609B89827508029632451e1",
+    "wonTickets": 2,
+    "finalTokens": 8031000000,
+    "amountUSDC": 70,
+    "wonUSDC": 20,
+    "returnUSDC": 50
+  },
+  {
+    "address": "0x596Ac523A2F887D44BA69d3144A17b7def627aF8",
+    "wonTickets": 1,
+    "finalTokens": 4015500000,
+    "amountUSDC": 160,
+    "wonUSDC": 10,
+    "returnUSDC": 150
+  },
+  {
+    "address": "0x3D8De07Bbb9f997Bc418090EaaD892Ea9a5374C1",
+    "wonTickets": 1,
+    "finalTokens": 4015500000,
+    "amountUSDC": 30,
+    "wonUSDC": 10,
+    "returnUSDC": 20
+  },
+  {
+    "address": "0x96c4c9CD98eB02ba00F2731e4ffB965Fa2A41923",
+    "wonTickets": 289,
+    "finalTokens": 1160479500000,
+    "amountUSDC": 20000,
+    "wonUSDC": 2890,
+    "returnUSDC": 17110
+  },
+  {
+    "address": "0xB82d5544Eb467Cf2FbbcC3882b0a4847B5fBc8e9",
+    "wonTickets": 13,
+    "finalTokens": 52201500000,
+    "amountUSDC": 780,
+    "wonUSDC": 130,
+    "returnUSDC": 650
+  },
+  {
+    "address": "0xaeAf014cF88Edc5d666077D7c017D19A44F74505",
+    "wonTickets": 3,
+    "finalTokens": 12046500000,
+    "amountUSDC": 150,
+    "wonUSDC": 30,
+    "returnUSDC": 120
+  },
+  {
+    "address": "0x2dB391D6449AcE0f6008B587321A1CFd9C7b2879",
+    "wonTickets": 93,
+    "finalTokens": 373441500000,
+    "amountUSDC": 6220,
+    "wonUSDC": 930,
+    "returnUSDC": 5290
+  },
+  {
+    "address": "0xff12faF1b14b3Bd54268f9D23D243F36b2CC8a94",
+    "wonTickets": 6,
+    "finalTokens": 24093000000,
+    "amountUSDC": 400,
+    "wonUSDC": 60,
+    "returnUSDC": 340
+  },
+  {
+    "address": "0xf17fad1fC969136311150d06791E6Ce891E25277",
+    "wonTickets": 2,
+    "finalTokens": 8031000000,
+    "amountUSDC": 60,
+    "wonUSDC": 20,
+    "returnUSDC": 40
+  },
+  {
+    "address": "0x837Ea8C791379BD69a1a85C5Db08c9cac233aC6B",
+    "wonTickets": 5,
+    "finalTokens": 20077500000,
+    "amountUSDC": 180,
+    "wonUSDC": 50,
+    "returnUSDC": 130
+  },
+  {
+    "address": "0x27F1Ca84C17150af7FACE5054a6A2670A75ed060",
+    "wonTickets": 1,
+    "finalTokens": 4015500000,
+    "amountUSDC": 40,
+    "wonUSDC": 10,
+    "returnUSDC": 30
+  },
+  {
+    "address": "0x57a20209A18185F982F5f883502d8EB499900303",
+    "wonTickets": 1,
+    "finalTokens": 4015500000,
+    "amountUSDC": 50,
+    "wonUSDC": 10,
+    "returnUSDC": 40
+  },
+  {
+    "address": "0xB8C53FDB2ED1Ef8a7107918bD4B22Ee1e07e3841",
+    "wonTickets": 3,
+    "finalTokens": 12046500000,
+    "amountUSDC": 300,
+    "wonUSDC": 30,
+    "returnUSDC": 270
   },
   {
     "address": "0x97240Ea608fb88f152519bB45E6c7c8a0E5c33a2",
@@ -585,35 +505,27 @@
   },
   {
     "address": "0x0cAC63F1218ac8e96fE838bfF92017FF3844B53A",
-    "wonTickets": 12,
-    "finalTokens": 48186000000,
+    "wonTickets": 3,
+    "finalTokens": 12046500000,
     "amountUSDC": 400,
-    "wonUSDC": 120,
-    "returnUSDC": 280
+    "wonUSDC": 30,
+    "returnUSDC": 370
   },
   {
     "address": "0x895F25a04C7C4F0Ce96BDE5a83dBFBa13982c09c",
-    "wonTickets": 1,
-    "finalTokens": 4015500000,
+    "wonTickets": 4,
+    "finalTokens": 16062000000,
     "amountUSDC": 100,
-    "wonUSDC": 10,
-    "returnUSDC": 90
+    "wonUSDC": 40,
+    "returnUSDC": 60
   },
   {
     "address": "0x181d3fD7D94e9E688373770836AF85c3fD16e360",
-    "wonTickets": 6,
-    "finalTokens": 24093000000,
+    "wonTickets": 3,
+    "finalTokens": 12046500000,
     "amountUSDC": 420,
-    "wonUSDC": 60,
-    "returnUSDC": 360
-  },
-  {
-    "address": "0x674118D0F2c5f09d96Ad9638857E28E23cEF24dA",
-    "wonTickets": 1,
-    "finalTokens": 4015500000,
-    "amountUSDC": 30,
-    "wonUSDC": 10,
-    "returnUSDC": 20
+    "wonUSDC": 30,
+    "returnUSDC": 390
   },
   {
     "address": "0x3E1dc89ab1E3BB8A64bB0f65b65b404f1BF708c3",
@@ -624,115 +536,275 @@
     "returnUSDC": 240
   },
   {
+    "address": "0x98B2690c6A98669B53f99Ad80C0eEd08a641707C",
+    "wonTickets": 1,
+    "finalTokens": 4015500000,
+    "amountUSDC": 30,
+    "wonUSDC": 10,
+    "returnUSDC": 20
+  },
+  {
     "address": "0x847A643AD8d71569329E8B133a68291696D9ac4B",
-    "wonTickets": 6,
-    "finalTokens": 24093000000,
+    "wonTickets": 4,
+    "finalTokens": 16062000000,
     "amountUSDC": 240,
-    "wonUSDC": 60,
-    "returnUSDC": 180
+    "wonUSDC": 40,
+    "returnUSDC": 200
   },
   {
     "address": "0x13d75E3efA4788b9786a66CcDd54bBDbfc6FB690",
-    "wonTickets": 2,
-    "finalTokens": 8031000000,
+    "wonTickets": 4,
+    "finalTokens": 16062000000,
     "amountUSDC": 170,
-    "wonUSDC": 20,
-    "returnUSDC": 150
+    "wonUSDC": 40,
+    "returnUSDC": 130
   },
   {
     "address": "0xfd3f412fc20b7ED21740786F097322b679331779",
-    "wonTickets": 14,
-    "finalTokens": 56217000000,
+    "wonTickets": 7,
+    "finalTokens": 28108500000,
     "amountUSDC": 500,
-    "wonUSDC": 140,
-    "returnUSDC": 360
+    "wonUSDC": 70,
+    "returnUSDC": 430
   },
   {
     "address": "0x96Fb567ef48bFFDD95167821aC442bB95eD72006",
-    "wonTickets": 19,
-    "finalTokens": 76294500000,
+    "wonTickets": 9,
+    "finalTokens": 36139500000,
     "amountUSDC": 690,
-    "wonUSDC": 190,
-    "returnUSDC": 500
+    "wonUSDC": 90,
+    "returnUSDC": 600
   },
   {
     "address": "0x958DF15C3E7Ea43F3635097e6279bD8d20cb80aA",
-    "wonTickets": 6,
-    "finalTokens": 24093000000,
-    "amountUSDC": 250,
-    "wonUSDC": 60,
-    "returnUSDC": 190
-  },
-  {
-    "address": "0x7E661ac52e2578d56EEEC231016c7B4DC0A73B75",
-    "wonTickets": 2,
-    "finalTokens": 8031000000,
-    "amountUSDC": 30,
-    "wonUSDC": 20,
-    "returnUSDC": 10
-  },
-  {
-    "address": "0xb50315aff86466D19e6f8582B1D5CEe5595a1ba8",
     "wonTickets": 3,
     "finalTokens": 12046500000,
-    "amountUSDC": 100,
+    "amountUSDC": 250,
     "wonUSDC": 30,
-    "returnUSDC": 70
-  },
-  {
-    "address": "0x8275d0c0E22869ced1d1c52CC35a9DE871a164F6",
-    "wonTickets": 7,
-    "finalTokens": 28108500000,
-    "amountUSDC": 290,
-    "wonUSDC": 70,
     "returnUSDC": 220
   },
   {
-    "address": "0x4E02A3818bf2B5fA36809C74270A93131F87E432",
+    "address": "0xb50315aff86466D19e6f8582B1D5CEe5595a1ba8",
     "wonTickets": 1,
     "finalTokens": 4015500000,
-    "amountUSDC": 70,
+    "amountUSDC": 100,
     "wonUSDC": 10,
-    "returnUSDC": 60
+    "returnUSDC": 90
+  },
+  {
+    "address": "0x8275d0c0E22869ced1d1c52CC35a9DE871a164F6",
+    "wonTickets": 5,
+    "finalTokens": 20077500000,
+    "amountUSDC": 290,
+    "wonUSDC": 50,
+    "returnUSDC": 240
+  },
+  {
+    "address": "0x4E02A3818bf2B5fA36809C74270A93131F87E432",
+    "wonTickets": 2,
+    "finalTokens": 8031000000,
+    "amountUSDC": 70,
+    "wonUSDC": 20,
+    "returnUSDC": 50
   },
   {
     "address": "0x3aC8887C1F35875791c56c34fBB327D3361Fee47",
-    "wonTickets": 10,
-    "finalTokens": 40155000000,
+    "wonTickets": 7,
+    "finalTokens": 28108500000,
     "amountUSDC": 470,
-    "wonUSDC": 100,
-    "returnUSDC": 370
+    "wonUSDC": 70,
+    "returnUSDC": 400
   },
   {
     "address": "0x5f69726618599dA88EDC60DC2873B1c73Af69AE3",
-    "wonTickets": 219,
-    "finalTokens": 879394500000,
+    "wonTickets": 124,
+    "finalTokens": 497922000000,
     "amountUSDC": 9110,
-    "wonUSDC": 2190,
-    "returnUSDC": 6920
+    "wonUSDC": 1240,
+    "returnUSDC": 7870
   },
   {
     "address": "0xEFFa0B6B2Ed1A91c14c281F23eAbc4e2d7Ff6FCf",
-    "wonTickets": 14,
-    "finalTokens": 56217000000,
+    "wonTickets": 5,
+    "finalTokens": 20077500000,
     "amountUSDC": 390,
-    "wonUSDC": 140,
-    "returnUSDC": 250
+    "wonUSDC": 50,
+    "returnUSDC": 340
   },
   {
     "address": "0xC048226670753063491bA4cF9bfFA4E23585DFdf",
-    "wonTickets": 201,
-    "finalTokens": 807115500000,
+    "wonTickets": 140,
+    "finalTokens": 562170000000,
     "amountUSDC": 10000,
-    "wonUSDC": 2010,
-    "returnUSDC": 7990
+    "wonUSDC": 1400,
+    "returnUSDC": 8600
   },
   {
-    "address": "0xaC114511B5fBaA565DBAA3d7cAe85b4750392365",
+    "address": "0x240ee1628F457861f7ba72e0Ef0743940c8aa021",
+    "wonTickets": 12,
+    "finalTokens": 48186000000,
+    "amountUSDC": 1200,
+    "wonUSDC": 120,
+    "returnUSDC": 1080
+  },
+  {
+    "address": "0x17d242D61E2A78223d1C0D34B9ABad60D64C6BF1",
+    "wonTickets": 29,
+    "finalTokens": 116449500000,
+    "amountUSDC": 2970,
+    "wonUSDC": 290,
+    "returnUSDC": 2680
+  },
+  {
+    "address": "0x98b267c74728e49fD14bdEEdd7e08F6c610Be38A",
+    "wonTickets": 84,
+    "finalTokens": 337302000000,
+    "amountUSDC": 5430,
+    "wonUSDC": 840,
+    "returnUSDC": 4590
+  },
+  {
+    "address": "0xFad2283Ec9698516DEcF57Ff47AE79761F9843E9",
+    "wonTickets": 6,
+    "finalTokens": 24093000000,
+    "amountUSDC": 300,
+    "wonUSDC": 60,
+    "returnUSDC": 240
+  },
+  {
+    "address": "0xd51D49A1a67AB4ED75825D1F8a99b1c794e4A164",
+    "wonTickets": 11,
+    "finalTokens": 44170500000,
+    "amountUSDC": 300,
+    "wonUSDC": 110,
+    "returnUSDC": 190
+  },
+  {
+    "address": "0x456DA0a1CBA79C3Cb64E4A9F3Ffc5d1a09290e1e",
+    "wonTickets": 31,
+    "finalTokens": 124480500000,
+    "amountUSDC": 1850,
+    "wonUSDC": 310,
+    "returnUSDC": 1540
+  },
+  {
+    "address": "0xa91A73C911935e93A977B9FDE9F29DAB81fb6BC8",
     "wonTickets": 1,
     "finalTokens": 4015500000,
-    "amountUSDC": 10,
+    "amountUSDC": 90,
     "wonUSDC": 10,
-    "returnUSDC": 0
+    "returnUSDC": 80
+  },
+  {
+    "address": "0x9a0B985f9e1E6EdD40715BB0d38155F3102Aeb0E",
+    "wonTickets": 2,
+    "finalTokens": 8031000000,
+    "amountUSDC": 140,
+    "wonUSDC": 20,
+    "returnUSDC": 120
+  },
+  {
+    "address": "0x7BbEbF51d8d0880A1f4188C95D9A3bab8dD891a6",
+    "wonTickets": 2,
+    "finalTokens": 8031000000,
+    "amountUSDC": 50,
+    "wonUSDC": 20,
+    "returnUSDC": 30
+  },
+  {
+    "address": "0x28D4FBD1dA8Ca64cE2d11F0C2A23b1a30Ee72c7B",
+    "wonTickets": 1,
+    "finalTokens": 4015500000,
+    "amountUSDC": 100,
+    "wonUSDC": 10,
+    "returnUSDC": 90
+  },
+  {
+    "address": "0x783d21e4534521052cB96a772619BCaA1CDC6E3f",
+    "wonTickets": 2,
+    "finalTokens": 8031000000,
+    "amountUSDC": 110,
+    "wonUSDC": 20,
+    "returnUSDC": 90
+  },
+  {
+    "address": "0x9a3e41D870E8F3B5cdBaa6167DefE6926a99F29E",
+    "wonTickets": 210,
+    "finalTokens": 843255000000,
+    "amountUSDC": 15180,
+    "wonUSDC": 2100,
+    "returnUSDC": 13080
+  },
+  {
+    "address": "0x33b5A04E0D79E7847F56b28Bba20e8Da77a06B66",
+    "wonTickets": 2,
+    "finalTokens": 8031000000,
+    "amountUSDC": 130,
+    "wonUSDC": 20,
+    "returnUSDC": 110
+  },
+  {
+    "address": "0x161619839EBbADa5d3C279E1A79C50F7fc4274D6",
+    "wonTickets": 152,
+    "finalTokens": 610356000000,
+    "amountUSDC": 10610,
+    "wonUSDC": 1520,
+    "returnUSDC": 9090
+  },
+  {
+    "address": "0xD054b925C87E6321D9EbC3c21f45fC0f8a8F4364",
+    "wonTickets": 1,
+    "finalTokens": 4015500000,
+    "amountUSDC": 200,
+    "wonUSDC": 10,
+    "returnUSDC": 190
+  },
+  {
+    "address": "0xC5476045c76d175fD15b6558B69a065a728e5F16",
+    "wonTickets": 16,
+    "finalTokens": 64248000000,
+    "amountUSDC": 980,
+    "wonUSDC": 160,
+    "returnUSDC": 820
+  },
+  {
+    "address": "0x8481d434856d603ECc968B841c0cf8fB120a3361",
+    "wonTickets": 1,
+    "finalTokens": 4015500000,
+    "amountUSDC": 20,
+    "wonUSDC": 10,
+    "returnUSDC": 10
+  },
+  {
+    "address": "0x486dc6ee117557Acf8Ca222A83343983Bdc005F1",
+    "wonTickets": 18,
+    "finalTokens": 72279000000,
+    "amountUSDC": 1000,
+    "wonUSDC": 180,
+    "returnUSDC": 820
+  },
+  {
+    "address": "0x20B9e6467956CCc5Fc087Ad7b7530a3E4800f6B0",
+    "wonTickets": 14,
+    "finalTokens": 56217000000,
+    "amountUSDC": 700,
+    "wonUSDC": 140,
+    "returnUSDC": 560
+  },
+  {
+    "address": "0x377726c5931BF009EB5Bf1bfa3ab980785c67AFA",
+    "wonTickets": 12,
+    "finalTokens": 48186000000,
+    "amountUSDC": 800,
+    "wonUSDC": 120,
+    "returnUSDC": 680
+  },
+  {
+    "address": "0x4f4d74826c910e4621C465f09bD4373C6cD3d5fC",
+    "wonTickets": 8,
+    "finalTokens": 32124000000,
+    "amountUSDC": 1350,
+    "wonUSDC": 80,
+    "returnUSDC": 1270
   }
 ]
