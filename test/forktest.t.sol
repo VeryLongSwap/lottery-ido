@@ -11,18 +11,18 @@ contract ForkTest is Test, StructList {
 
     struct JSONData {
         address addr;
-        uint256 wonTickets;
-        uint256 finalTokens;
         uint256 amountUSDC;
-        uint256 wonUSDC;
+        uint256 finalTokens;
         uint256 returnUSDC;
+        uint256 wonTickets;
+        uint256 wonUSDC;
     }
 
     // CSVデータを直接配列として定義
     JSONData[] public csv;
 
     uint256 fork;
-    uint256 blocknumber = 3833381;
+    uint256 blocknumber = 3837590;
     address owner = 0xA20d63131210dAEA56BF99A660d9599ec78dF54D;
 
     OverflowICO public ido =
@@ -60,7 +60,6 @@ contract ForkTest is Test, StructList {
         assertEq(USDC.balanceOf(ido.owner()), 138734024898);
     }
 
-
     function testWriteSetResult() public {
         vm.selectFork(fork);
         vm.rollFork(blocknumber);
@@ -71,6 +70,7 @@ contract ForkTest is Test, StructList {
             csv.length
         );
         for (uint i = 0; i < csv.length; i++) {
+            console.log("setresult", csv[i].addr, csv[i].wonTickets);
             uint256[] memory wonTicketsAmount = new uint256[](1);
             wonTicketsAmount[0] = csv[i].wonTickets;
             args[i] = SetResultArgs({
@@ -117,10 +117,7 @@ contract ForkTest is Test, StructList {
             "tokensToUserGrant exceeds tokensToSell"
         );
 
-        console.log("SetResult function called successfully with CSV data");
-
         vm.warp(block.timestamp + 30 days);
-        console.log("blocktimestamp", block.timestamp + 30 days);
         // claim2関数とrefund関数のテストを追加
 
         for (uint i = 0; i < csv.length; i++) {
@@ -130,7 +127,6 @@ contract ForkTest is Test, StructList {
             // ユーザーとしてclaim2関数を呼び出す
             vm.startPrank(user);
             ido.claim2();
-            vm.stopPrank();
 
             // クレームされたトークン量を検証
             uint256 claimedTokens = IERC20(ido.rewardToken()).balanceOf(user);
@@ -139,12 +135,29 @@ contract ForkTest is Test, StructList {
                 csv[i].finalTokens,
                 "Claimed tokens mismatch for user"
             );
+            console.log("refund userinfo.addr", csv[i].addr, csv[i].returnUSDC);
+
+            StructList.UserInfo memory refundinfo = ido.returnUserInfo(
+                csv[i].addr
+            );
+            console.log(
+                "norefund",
+                refundinfo.noRefund[0],
+                "tickets",
+                refundinfo.tickets[0]
+            );
+
+            console.log(
+                "isclaimed",
+                refundinfo.isClaimed,
+                "wontickets",
+                refundinfo.wonTickets[0]
+            );
 
             // ユーザーとしてrefund関数を呼び出す
+
             if (csv[i].returnUSDC > 0) {
-                vm.startPrank(user);
                 ido.refund(0);
-                vm.stopPrank();
 
                 // 返金されたUSDC量を検証
                 uint256 refundedUSDC = USDC.balanceOf(user) -
@@ -154,9 +167,11 @@ contract ForkTest is Test, StructList {
                     csv[i].returnUSDC * (10 ** 6),
                     "Refunded USDC mismatch for user"
                 );
+                console.log("refunded", refundedUSDC, "USDC");
             }
 
-            // console.log("User", user, "claimed", claimedTokens, "tokens and refunded", refundedUSDC, "USDC");
+            vm.stopPrank();
+            console.log("------claimed and refund-----");
         }
     }
 }
