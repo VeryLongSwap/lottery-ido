@@ -9,15 +9,17 @@ import "openzeppelin-contracts/contracts/token/ERC20/utils/SafeERC20.sol";
 contract ForkTest is Test, StructList {
     using SafeERC20 for IERC20;
 
-    struct CSVData {
+    struct JSONData {
         address addr;
         uint256 wonTickets;
         uint256 finalTokens;
+        uint256 amountUSDC;
+        uint256 wonUSDC;
         uint256 returnUSDC;
     }
 
     // CSVデータを直接配列として定義
-    CSVData[] public csv;
+    JSONData[] public csv;
 
     uint256 fork;
     uint256 blocknumber = 3833381;
@@ -30,47 +32,11 @@ contract ForkTest is Test, StructList {
     function setUp() public {
         fork = vm.createFork("https://rpc.startale.com/astar-zkevm");
 
-        // CSVデータを直接構造体の配列として設定
-        csv.push(
-            CSVData(
-                0xCEA525eE12e751379e3B0e8fE4a737E8A8d15622,
-                2,
-                8031000000,
-                10
-            )
-        );
-        csv.push(
-            CSVData(
-                0x0f7bF2e6BEbf3d352405B0f855d4B6fC6Fe50b3F,
-                1,
-                4015500000,
-                20
-            )
-        );
-        csv.push(
-            CSVData(
-                0x944C6C8882012CcD4FFd2911a7F1fDC520c9a561,
-                1,
-                4015500000,
-                0
-            )
-        );
-        csv.push(
-            CSVData(
-                0xbB7eb80b94F6a7ACd7FF7966606e34fB2725C229,
-                437,
-                1754773500000,
-                15630
-            )
-        );
-        csv.push(
-            CSVData(
-                0x34FeE623474A202143aDD25602f531Be0Fbe5458,
-                20,
-                80310000000,
-                600
-            )
-        );
+        string memory root = vm.projectRoot();
+        string memory path = string.concat(root, "/test/commit2.json");
+        string memory json = vm.readFile(path);
+        bytes memory parsedJson = vm.parseJson(json);
+        csv = abi.decode(parsedJson, (JSONData[]));
     }
 
     function testAddress() public {
@@ -94,21 +60,6 @@ contract ForkTest is Test, StructList {
         assertEq(USDC.balanceOf(ido.owner()), 138734024898);
     }
 
-    // 必要に応じて、個別のデータ行をテストする関数を追加
-    function testSpecificRow() public view {
-        uint rowIndex = 2; // 3番目の行（0-indexed）
-        CSVData memory row = csv[rowIndex];
-
-        assertEq(
-            row.addr,
-            0x944C6C8882012CcD4FFd2911a7F1fDC520c9a561,
-            "Address mismatch"
-        );
-        assertEq(row.wonTickets, 1, "Won tickets mismatch");
-        assertEq(row.finalTokens, 4015500000, "Final tokens mismatch");
-
-        console.log("Specific row test passed");
-    }
 
     function testWriteSetResult() public {
         vm.selectFork(fork);

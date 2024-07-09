@@ -4,7 +4,10 @@ out = "out"
 libs = ["lib"]
 solc_version = "0.8.23"
 
-# See more config options https://github.com/foundry-rs/foundry/blob/master/crates/config/README.md#all-options
+
+# テストファイルへのアクセスを許可
+fs_permissions = [{ access = "read", path = "./test"}]
+
 
 [rpc_endpoints]
 astarzk = "https://rpc.startale.com/astar-zkevm"
