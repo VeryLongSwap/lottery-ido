@@ -22,7 +22,10 @@ contract ForkTest is Test, StructList {
     JSONData[] public csv;
 
     uint256 fork;
-    uint256 blocknumber = 3837590;
+    uint256 ownerInitialUSDCBalance = 3504024898;
+    uint256 idoUSDCBalance = 513620000000;
+    uint256 idoRewardTokenBalance = 8_031_000_000_000 * (10 ** 18);
+    uint256 blocknumber = 3857780;
     address owner = 0xA20d63131210dAEA56BF99A660d9599ec78dF54D;
 
     OverflowICO public ido =
@@ -33,7 +36,7 @@ contract ForkTest is Test, StructList {
         fork = vm.createFork("https://rpc.startale.com/astar-zkevm");
 
         string memory root = vm.projectRoot();
-        string memory path = string.concat(root, "/test/commit2.json");
+        string memory path = string.concat(root, "/test/commit3.json");
         string memory json = vm.readFile(path);
         bytes memory parsedJson = vm.parseJson(json);
         csv = abi.decode(parsedJson, (JSONData[]));
@@ -47,7 +50,45 @@ contract ForkTest is Test, StructList {
         assertEq(block.number, blocknumber);
         assertEq(address(ido), 0x395D4ad692cF61c9324F528aF191b2B8d2eA0d58);
         assertEq(ido.owner(), owner);
-        assertEq(USDC.balanceOf(address(ido)), 141600000000);
+        assertEq(USDC.balanceOf(address(ido)), idoUSDCBalance);
+    }
+
+    function testFinishIDO() public {
+        vm.selectFork(fork);
+        vm.rollFork(blocknumber);
+        vm.startPrank(owner);
+
+        IERC20 rewardTokens = IERC20(ido.rewardToken());
+
+
+        assertEq(USDC.balanceOf(address(ido)), idoUSDCBalance);
+        assertEq(USDC.balanceOf(ido.owner()), ownerInitialUSDCBalance);
+        assertEq(rewardTokens.balanceOf(ido.owner()), 0);
+        assertEq(rewardTokens.balanceOf(address(ido)), idoRewardTokenBalance);
+
+        // CSVデータからSetResultArgs配列を作成
+        StructList.SetResultArgs[] memory args = new StructList.SetResultArgs[](
+            csv.length
+        );
+        for (uint i = 0; i < csv.length; i++) {
+            uint256[] memory wonTicketsAmount = new uint256[](1);
+            wonTicketsAmount[0] = csv[i].wonTickets;
+            args[i] = SetResultArgs({
+                addr: csv[i].addr,
+                amount: csv[i].finalTokens * (10 ** 18),
+                wonTicketsAmount: wonTicketsAmount
+            });
+        }
+
+        // setResult関数を呼び出す
+        ido.setResult(args);
+
+        ido.finish();
+        assertEq(USDC.balanceOf(address(ido)), idoUSDCBalance - 20000 * (10 ** 6));
+        assertEq(USDC.balanceOf(ido.owner()), ownerInitialUSDCBalance + 20000 * (10 ** 6));
+        assertEq(rewardTokens.balanceOf(ido.owner()), 0);
+        assertEq(rewardTokens.balanceOf(address(ido)), idoRewardTokenBalance);
+
     }
 
     function testWithdraw() public {
@@ -55,9 +96,9 @@ contract ForkTest is Test, StructList {
         vm.rollFork(blocknumber);
         vm.startPrank(owner);
 
-        assertEq(USDC.balanceOf(ido.owner()), 3504024898);
+        assertEq(USDC.balanceOf(ido.owner()), ownerInitialUSDCBalance);
         ido.withdrawToken(USDC, 135230000000, ido.owner());
-        assertEq(USDC.balanceOf(ido.owner()), 138734024898);
+        assertEq(USDC.balanceOf(ido.owner()), ownerInitialUSDCBalance - 135230000000);
     }
 
     function testWriteSetResult() public {
@@ -75,7 +116,7 @@ contract ForkTest is Test, StructList {
             wonTicketsAmount[0] = csv[i].wonTickets;
             args[i] = SetResultArgs({
                 addr: csv[i].addr,
-                amount: csv[i].finalTokens,
+                amount: csv[i].finalTokens * (10 ** 18),
                 wonTicketsAmount: wonTicketsAmount
             });
         }
@@ -90,7 +131,7 @@ contract ForkTest is Test, StructList {
             );
             assertEq(
                 userinfo.finalTokens,
-                csv[i].finalTokens,
+                csv[i].finalTokens * (10 ** 18),
                 "Final tokens mismatch"
             );
             assertEq(
@@ -103,7 +144,7 @@ contract ForkTest is Test, StructList {
         // tokensToUserGrantの検証
         uint256 expectedTokensToUserGrant = 0;
         for (uint i = 0; i < csv.length; i++) {
-            expectedTokensToUserGrant += csv[i].finalTokens;
+            expectedTokensToUserGrant += csv[i].finalTokens * (10 ** 18);
         }
         assertEq(
             ido.tokensToUserGrant(),
@@ -132,7 +173,7 @@ contract ForkTest is Test, StructList {
             uint256 claimedTokens = IERC20(ido.rewardToken()).balanceOf(user);
             assertEq(
                 claimedTokens,
-                csv[i].finalTokens,
+                csv[i].finalTokens * (10 ** 18),
                 "Claimed tokens mismatch for user"
             );
             console.log("refund userinfo.addr", csv[i].addr, csv[i].returnUSDC);

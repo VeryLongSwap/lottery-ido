@@ -1,0 +1,1057 @@
+[
+  {
+    "address": "0xCEA525eE12e751379e3B0e8fE4a737E8A8d15622",
+    "staking": "0",
+    "amount": "3"
+  },
+  {
+    "address": "0x0f7bF2e6BEbf3d352405B0f855d4B6fC6Fe50b3F",
+    "staking": "500000000000000000000",
+    "amount": "3"
+  },
+  {
+    "address": "0xbB7eb80b94F6a7ACd7FF7966606e34fB2725C229",
+    "staking": "0",
+    "amount": "2026"
+  },
+  {
+    "address": "0x944C6C8882012CcD4FFd2911a7F1fDC520c9a561",
+    "staking": "0",
+    "amount": "1"
+  },
+  {
+    "address": "0x34FeE623474A202143aDD25602f531Be0Fbe5458",
+    "staking": "0",
+    "amount": "80"
+  },
+  {
+    "address": "0xaF7CCDd3a690EF9bF55c9C4e522f4429cc85f392",
+    "staking": "0",
+    "amount": "10"
+  },
+  {
+    "address": "0x45de1c3b41596224C51C66FC286aA5B363511DCb",
+    "staking": "0",
+    "amount": "3"
+  },
+  {
+    "address": "0x23198cBf617e8003E6B9d888fefc9F22DFFeAfa9",
+    "staking": "0",
+    "amount": "5"
+  },
+  {
+    "address": "0x0a4aB49Cb3a71263BB3881799f50c32Af0Dba651",
+    "staking": "0",
+    "amount": "1"
+  },
+  {
+    "address": "0x61EC94F740707F8cE243b80F765A2b95196f1c5A",
+    "staking": "0",
+    "amount": "2"
+  },
+  {
+    "address": "0x4815366bB6f74796173c8Bea057B5919810138a6",
+    "staking": "0",
+    "amount": "228"
+  },
+  {
+    "address": "0xC8b122195f3657578A4705721633308A4264ae8A",
+    "staking": "0",
+    "amount": "17"
+  },
+  {
+    "address": "0x3125eD60Dd85E43383e369bBf9b4DE68100B9bA1",
+    "staking": "0",
+    "amount": "7"
+  },
+  {
+    "address": "0x1dEc530a07c8f1C16BEF63B763A99407835c2C25",
+    "staking": "0",
+    "amount": "20"
+  },
+  {
+    "address": "0x6271d199AF035Dc791d00feb62FbA4cb5C3D2b31",
+    "staking": "0",
+    "amount": "10"
+  },
+  {
+    "address": "0x95F1946634F3F819E4b3Fd61559CB2187dE29e27",
+    "staking": "100000000000000000000000",
+    "amount": "112"
+  },
+  {
+    "address": "0xb8D32a1508830AB845be35D0095b54430F269559",
+    "staking": "0",
+    "amount": "38"
+  },
+  {
+    "address": "0xA8644D3d37e5B9bA50038F652eebeE3b7108d554",
+    "staking": "0",
+    "amount": "2"
+  },
+  {
+    "address": "0x3A9272b13D3D262bB7944f2e5c1FEe681aF4B247",
+    "staking": "0",
+    "amount": "174"
+  },
+  {
+    "address": "0x5140CEB53a00dB80C3F094fB312fa91fa44fAaf3",
+    "staking": "0",
+    "amount": "2"
+  },
+  {
+    "address": "0x6c7184274Bdd853023eb8E6A89242dCAEFdCb922",
+    "staking": "0",
+    "amount": "5"
+  },
+  {
+    "address": "0xa144E2a63d20A653eE10B7aeA763b23C77ef60c6",
+    "staking": "0",
+    "amount": "8"
+  },
+  {
+    "address": "0x08b35d6cffFF52e3D619140Ad88ED43d9C6e66D8",
+    "staking": "7500000000000000000000",
+    "amount": "5"
+  },
+  {
+    "address": "0x1b68DdDb49D763DAA012e164DE0359fC046aD8aF",
+    "staking": "0",
+    "amount": "8"
+  },
+  {
+    "address": "0x147B413E89251C5c4F0cc2b3b5Ca315Ea5137b8a",
+    "staking": "180300000000000000000000",
+    "amount": "9"
+  },
+  {
+    "address": "0x1407A78Eda9d3de8A9E5f40636660fBe20920f15",
+    "staking": "0",
+    "amount": "9"
+  },
+  {
+    "address": "0xB98A815B3D0aF4D99e9D05DF7Bfbeb17e47F5eD6",
+    "staking": "0",
+    "amount": "2"
+  },
+  {
+    "address": "0xA3a94A0CAFBe7074afbca75Df64666A6E2DADAc0",
+    "staking": "0",
+    "amount": "655"
+  },
+  {
+    "address": "0xd7e7e3c613758099702b8feDD444Be85C16C0E1C",
+    "staking": "0",
+    "amount": "300"
+  },
+  {
+    "address": "0x417487275239E0f6c5AC79f5D60135eCf118169b",
+    "staking": "0",
+    "amount": "90"
+  },
+  {
+    "address": "0x27a7A3355D2D51F413D7d73e069A17cB106f13Be",
+    "staking": "0",
+    "amount": "162"
+  },
+  {
+    "address": "0x8cB1F920e437791A97443cC81b62476120D30e40",
+    "staking": "0",
+    "amount": "34"
+  },
+  {
+    "address": "0x705DB10C7446f3FE3F27DF8C9CE420144AA2eAFA",
+    "staking": "0",
+    "amount": "40"
+  },
+  {
+    "address": "0x2BB43FF4663a4209e66222F2320537B4bfdcB693",
+    "staking": "0",
+    "amount": "14"
+  },
+  {
+    "address": "0xc1D9c776Ef4BA56026bB47F16e36C6A4bdAB7d9E",
+    "staking": "0",
+    "amount": "5"
+  },
+  {
+    "address": "0x49eF397534F6299e0A8FeE75Bc16F09726E11ef2",
+    "staking": "0",
+    "amount": "6"
+  },
+  {
+    "address": "0xC1D0BAd29d021fe2b0698ce5c171Bd80185d5d6B",
+    "staking": "0",
+    "amount": "6"
+  },
+  {
+    "address": "0x48BD7f6658A7098B83b51b1b6E7A509e382D8aCf",
+    "staking": "0",
+    "amount": "2"
+  },
+  {
+    "address": "0x3428BacD15D15E5C9B8Bb2F9e1445F49aCC8AD17",
+    "staking": "0",
+    "amount": "1"
+  },
+  {
+    "address": "0x61eCa06a20a6B7F09EfBE78117A9CC632E332227",
+    "staking": "0",
+    "amount": "1"
+  },
+  {
+    "address": "0x1f700588DA5980005b1fF37f60b965EC5AaDd11a",
+    "staking": "0",
+    "amount": "1"
+  },
+  {
+    "address": "0xca5F55Dc12F2e44194F07eFB9cf62ae3b7c114F8",
+    "staking": "0",
+    "amount": "1"
+  },
+  {
+    "address": "0xe39c9fDc2145eE5bB7CF02A4BB7aBb411685d980",
+    "staking": "0",
+    "amount": "34"
+  },
+  {
+    "address": "0xcD29a73e18395ad3f682e641121D8b28b410229b",
+    "staking": "0",
+    "amount": "1"
+  },
+  {
+    "address": "0xC5397C03E996F50271a7f6Ce1e7E66de9e691347",
+    "staking": "0",
+    "amount": "1"
+  },
+  {
+    "address": "0x41089B971D22ed2be9E0Dabb7Da3b5A702B737f5",
+    "staking": "0",
+    "amount": "9"
+  },
+  {
+    "address": "0x75B555ea9fb26f78E8014805DFA49E2AFb7b9778",
+    "staking": "0",
+    "amount": "2"
+  },
+  {
+    "address": "0x8F5ef19b7e71F85ff7D09C6a33bfd0e5D86df9A6",
+    "staking": "0",
+    "amount": "100"
+  },
+  {
+    "address": "0xE61EcC646799Bb74405E676656C0F6300D0ab999",
+    "staking": "0",
+    "amount": "100"
+  },
+  {
+    "address": "0xdE54139d9592128EE73B5F8f72e8d0A8DCAA5191",
+    "staking": "0",
+    "amount": "5"
+  },
+  {
+    "address": "0x7990bD07f6AFA5004bb1ea3e09e4DBEA32a76cda",
+    "staking": "0",
+    "amount": "10"
+  },
+  {
+    "address": "0x9C053Cda1fe2a8A44149319954B17203383Ea9F0",
+    "staking": "0",
+    "amount": "51"
+  },
+  {
+    "address": "0x1FDA16d5111f639D20ac78b31742b152729b421F",
+    "staking": "0",
+    "amount": "28"
+  },
+  {
+    "address": "0xc3E2Fca92fb40f53A4a92994CB9cbA6e33EE0148",
+    "staking": "0",
+    "amount": "99"
+  },
+  {
+    "address": "0xf71c90eF0314fE4DB2B2eE1921294dF6273769F8",
+    "staking": "170000000000000000000000",
+    "amount": "20"
+  },
+  {
+    "address": "0xd94DBE4cb4c924B997aD244Af2Ea458B371E1997",
+    "staking": "0",
+    "amount": "3"
+  },
+  {
+    "address": "0x75F5ECFDef355670F110D56A29eAb4CCaEBb6a4d",
+    "staking": "0",
+    "amount": "6"
+  },
+  {
+    "address": "0x095d2C4D5C9412a647EBC52Afc10ab021aE51Aa3",
+    "staking": "0",
+    "amount": "1"
+  },
+  {
+    "address": "0x70F6B77D6B75A5e64551760E069cB5FbD1A634Bd",
+    "staking": "0",
+    "amount": "9"
+  },
+  {
+    "address": "0x119A468dea5FA18E676587a6cF8E0Cb4898cBAb9",
+    "staking": "0",
+    "amount": "10"
+  },
+  {
+    "address": "0xF4b0d517f671A01dc90dFBA3c4402B117b0A7ADd",
+    "staking": "0",
+    "amount": "2"
+  },
+  {
+    "address": "0xebCA732d7d2a09Ab8A2D1E9AF10da88f70c15a09",
+    "staking": "0",
+    "amount": "2"
+  },
+  {
+    "address": "0x6C706335e2AE648B084985E14ad5Fb2A11005168",
+    "staking": "0",
+    "amount": "33"
+  },
+  {
+    "address": "0x9d06a4934772ec9F8019e4849D4F98fe0836deE4",
+    "staking": "0",
+    "amount": "47"
+  },
+  {
+    "address": "0x3E61DFfa0bC323Eaa16F4C982F96FEB89ab89E8a",
+    "staking": "0",
+    "amount": "3"
+  },
+  {
+    "address": "0x3b0bBa8DFC29e303d609B89827508029632451e1",
+    "staking": "0",
+    "amount": "7"
+  },
+  {
+    "address": "0x596Ac523A2F887D44BA69d3144A17b7def627aF8",
+    "staking": "0",
+    "amount": "16"
+  },
+  {
+    "address": "0x3D8De07Bbb9f997Bc418090EaaD892Ea9a5374C1",
+    "staking": "0",
+    "amount": "3"
+  },
+  {
+    "address": "0x96c4c9CD98eB02ba00F2731e4ffB965Fa2A41923",
+    "staking": "0",
+    "amount": "2000"
+  },
+  {
+    "address": "0x16c5100CF9543C62f0f4943e434442790bC82783",
+    "staking": "0",
+    "amount": "2"
+  },
+  {
+    "address": "0xB82d5544Eb467Cf2FbbcC3882b0a4847B5fBc8e9",
+    "staking": "0",
+    "amount": "78"
+  },
+  {
+    "address": "0xaeAf014cF88Edc5d666077D7c017D19A44F74505",
+    "staking": "0",
+    "amount": "15"
+  },
+  {
+    "address": "0x2dB391D6449AcE0f6008B587321A1CFd9C7b2879",
+    "staking": "0",
+    "amount": "622"
+  },
+  {
+    "address": "0xff12faF1b14b3Bd54268f9D23D243F36b2CC8a94",
+    "staking": "0",
+    "amount": "40"
+  },
+  {
+    "address": "0x777a083B510023f37417209B8F9D8E23fD4A3ba3",
+    "staking": "0",
+    "amount": "2"
+  },
+  {
+    "address": "0x1B66c6c91b7CF8015A354b01D6411a87161c1215",
+    "staking": "0",
+    "amount": "2"
+  },
+  {
+    "address": "0xf17fad1fC969136311150d06791E6Ce891E25277",
+    "staking": "0",
+    "amount": "6"
+  },
+  {
+    "address": "0x837Ea8C791379BD69a1a85C5Db08c9cac233aC6B",
+    "staking": "0",
+    "amount": "20"
+  },
+  {
+    "address": "0x27F1Ca84C17150af7FACE5054a6A2670A75ed060",
+    "staking": "0",
+    "amount": "4"
+  },
+  {
+    "address": "0x57a20209A18185F982F5f883502d8EB499900303",
+    "staking": "0",
+    "amount": "5"
+  },
+  {
+    "address": "0xa9D46DB44B21B34f8Dbc0fc6d8C4CBDa01E1Fc2A",
+    "staking": "0",
+    "amount": "10"
+  },
+  {
+    "address": "0xC61618aF68eB5F870c05eF8a371DEbB4bEDEA3BD",
+    "staking": "0",
+    "amount": "9"
+  },
+  {
+    "address": "0x46Ffbe229d5971585584DB39CCA44916861c74C9",
+    "staking": "0",
+    "amount": "5"
+  },
+  {
+    "address": "0xB8C53FDB2ED1Ef8a7107918bD4B22Ee1e07e3841",
+    "staking": "29385000000000000000000",
+    "amount": "30"
+  },
+  {
+    "address": "0x0312Ef4AeAa8ab8AbaDAdFfF2e136f442a147Fce",
+    "staking": "0",
+    "amount": "1"
+  },
+  {
+    "address": "0xdC2a26dA62eC880a137BD336315464bc78C2698A",
+    "staking": "0",
+    "amount": "3"
+  },
+  {
+    "address": "0x97240Ea608fb88f152519bB45E6c7c8a0E5c33a2",
+    "staking": "0",
+    "amount": "9"
+  },
+  {
+    "address": "0x0cAC63F1218ac8e96fE838bfF92017FF3844B53A",
+    "staking": "0",
+    "amount": "40"
+  },
+  {
+    "address": "0x895F25a04C7C4F0Ce96BDE5a83dBFBa13982c09c",
+    "staking": "0",
+    "amount": "10"
+  },
+  {
+    "address": "0x181d3fD7D94e9E688373770836AF85c3fD16e360",
+    "staking": "0",
+    "amount": "42"
+  },
+  {
+    "address": "0x674118D0F2c5f09d96Ad9638857E28E23cEF24dA",
+    "staking": "0",
+    "amount": "3"
+  },
+  {
+    "address": "0xDC9648bbD4Fc4478FeB7a81da25B516E285e5f6a",
+    "staking": "0",
+    "amount": "1"
+  },
+  {
+    "address": "0x3E1dc89ab1E3BB8A64bB0f65b65b404f1BF708c3",
+    "staking": "0",
+    "amount": "29"
+  },
+  {
+    "address": "0x98B2690c6A98669B53f99Ad80C0eEd08a641707C",
+    "staking": "5001000000000000000000",
+    "amount": "3"
+  },
+  {
+    "address": "0x847A643AD8d71569329E8B133a68291696D9ac4B",
+    "staking": "0",
+    "amount": "24"
+  },
+  {
+    "address": "0x13d75E3efA4788b9786a66CcDd54bBDbfc6FB690",
+    "staking": "0",
+    "amount": "1285"
+  },
+  {
+    "address": "0xfd3f412fc20b7ED21740786F097322b679331779",
+    "staking": "0",
+    "amount": "70"
+  },
+  {
+    "address": "0x96Fb567ef48bFFDD95167821aC442bB95eD72006",
+    "staking": "60500000000000000000000",
+    "amount": "69"
+  },
+  {
+    "address": "0x958DF15C3E7Ea43F3635097e6279bD8d20cb80aA",
+    "staking": "0",
+    "amount": "25"
+  },
+  {
+    "address": "0x7E661ac52e2578d56EEEC231016c7B4DC0A73B75",
+    "staking": "0",
+    "amount": "3"
+  },
+  {
+    "address": "0xb50315aff86466D19e6f8582B1D5CEe5595a1ba8",
+    "staking": "0",
+    "amount": "10"
+  },
+  {
+    "address": "0x8275d0c0E22869ced1d1c52CC35a9DE871a164F6",
+    "staking": "0",
+    "amount": "29"
+  },
+  {
+    "address": "0x4E02A3818bf2B5fA36809C74270A93131F87E432",
+    "staking": "0",
+    "amount": "7"
+  },
+  {
+    "address": "0x3aC8887C1F35875791c56c34fBB327D3361Fee47",
+    "staking": "0",
+    "amount": "47"
+  },
+  {
+    "address": "0xD68df40E91ebF4819Ff4Fc1BF56758b18Ea34433",
+    "staking": "0",
+    "amount": "1"
+  },
+  {
+    "address": "0x5f69726618599dA88EDC60DC2873B1c73Af69AE3",
+    "staking": "0",
+    "amount": "911"
+  },
+  {
+    "address": "0xEFFa0B6B2Ed1A91c14c281F23eAbc4e2d7Ff6FCf",
+    "staking": "0",
+    "amount": "39"
+  },
+  {
+    "address": "0x176FfF8b046f5B89EA328e3A6a79D6fe88905A0e",
+    "staking": "500000000000000000000",
+    "amount": "1"
+  },
+  {
+    "address": "0x54B4E4A37808B8d71A07F494eC20CfaB80e2827d",
+    "staking": "10000000000000000000000",
+    "amount": "1"
+  },
+  {
+    "address": "0xC048226670753063491bA4cF9bfFA4E23585DFdf",
+    "staking": "0",
+    "amount": "1000"
+  },
+  {
+    "address": "0xaC114511B5fBaA565DBAA3d7cAe85b4750392365",
+    "staking": "0",
+    "amount": "1"
+  },
+  {
+    "address": "0x240ee1628F457861f7ba72e0Ef0743940c8aa021",
+    "staking": "0",
+    "amount": "120"
+  },
+  {
+    "address": "0x62d35aF3365F76B883bC54d05Ac1fDB6B5f6D694",
+    "staking": "0",
+    "amount": "1"
+  },
+  {
+    "address": "0xaffA61971bB4A981676fd01516321824956678A8",
+    "staking": "0",
+    "amount": "3"
+  },
+  {
+    "address": "0x17d242D61E2A78223d1C0D34B9ABad60D64C6BF1",
+    "staking": "0",
+    "amount": "297"
+  },
+  {
+    "address": "0x98b267c74728e49fD14bdEEdd7e08F6c610Be38A",
+    "staking": "0",
+    "amount": "543"
+  },
+  {
+    "address": "0xFad2283Ec9698516DEcF57Ff47AE79761F9843E9",
+    "staking": "0",
+    "amount": "30"
+  },
+  {
+    "address": "0xB58Bf2D5ffb52c1fAd60f6750B639156AB249F53",
+    "staking": "0",
+    "amount": "1"
+  },
+  {
+    "address": "0xd51D49A1a67AB4ED75825D1F8a99b1c794e4A164",
+    "staking": "50000000000000000000000",
+    "amount": "30"
+  },
+  {
+    "address": "0xE65ef515aDc3fd724C326aDF8212B4284FD10137",
+    "staking": "0",
+    "amount": "1"
+  },
+  {
+    "address": "0x456DA0a1CBA79C3Cb64E4A9F3Ffc5d1a09290e1e",
+    "staking": "0",
+    "amount": "185"
+  },
+  {
+    "address": "0xdE5970D9fD25C2812ebc2cF3Ac0db81F29a52027",
+    "staking": "0",
+    "amount": "4"
+  },
+  {
+    "address": "0xa91A73C911935e93A977B9FDE9F29DAB81fb6BC8",
+    "staking": "0",
+    "amount": "9"
+  },
+  {
+    "address": "0x9a0B985f9e1E6EdD40715BB0d38155F3102Aeb0E",
+    "staking": "0",
+    "amount": "14"
+  },
+  {
+    "address": "0x6609eC70BF04f20DDd720470B2fEDA600427fC3A",
+    "staking": "0",
+    "amount": "2"
+  },
+  {
+    "address": "0x1FD7c4CFAe6d6D6301aE324EbCe61fB3bC92801B",
+    "staking": "0",
+    "amount": "3"
+  },
+  {
+    "address": "0xeC5dA4D9a79a9c01f9F482D84570B548E38A2F44",
+    "staking": "0",
+    "amount": "2"
+  },
+  {
+    "address": "0x7BbEbF51d8d0880A1f4188C95D9A3bab8dD891a6",
+    "staking": "0",
+    "amount": "5"
+  },
+  {
+    "address": "0x7c0C4a619CA51940f5Cb4620077BFa146792c49D",
+    "staking": "0",
+    "amount": "5"
+  },
+  {
+    "address": "0x28D4FBD1dA8Ca64cE2d11F0C2A23b1a30Ee72c7B",
+    "staking": "0",
+    "amount": "10"
+  },
+  {
+    "address": "0x783d21e4534521052cB96a772619BCaA1CDC6E3f",
+    "staking": "0",
+    "amount": "11"
+  },
+  {
+    "address": "0x9a3e41D870E8F3B5cdBaa6167DefE6926a99F29E",
+    "staking": "0",
+    "amount": "1518"
+  },
+  {
+    "address": "0x33b5A04E0D79E7847F56b28Bba20e8Da77a06B66",
+    "staking": "0",
+    "amount": "13"
+  },
+  {
+    "address": "0xd06b955733a5666F0Ff82eAd9501Ab3253560181",
+    "staking": "0",
+    "amount": "20"
+  },
+  {
+    "address": "0xFB0f5755DC920416b486752423c572451af72AEd",
+    "staking": "0",
+    "amount": "1"
+  },
+  {
+    "address": "0x161619839EBbADa5d3C279E1A79C50F7fc4274D6",
+    "staking": "0",
+    "amount": "1061"
+  },
+  {
+    "address": "0xD1Ec6dA0a5D811Bc710F6d9fA5F138Ed65c00d7A",
+    "staking": "0",
+    "amount": "4"
+  },
+  {
+    "address": "0xb0F026A67C66c931Ae55c1c00fa22c9e004037f0",
+    "staking": "0",
+    "amount": "5"
+  },
+  {
+    "address": "0xD054b925C87E6321D9EbC3c21f45fC0f8a8F4364",
+    "staking": "0",
+    "amount": "20"
+  },
+  {
+    "address": "0xC5476045c76d175fD15b6558B69a065a728e5F16",
+    "staking": "0",
+    "amount": "98"
+  },
+  {
+    "address": "0x8481d434856d603ECc968B841c0cf8fB120a3361",
+    "staking": "0",
+    "amount": "2"
+  },
+  {
+    "address": "0x486dc6ee117557Acf8Ca222A83343983Bdc005F1",
+    "staking": "0",
+    "amount": "100"
+  },
+  {
+    "address": "0x20B9e6467956CCc5Fc087Ad7b7530a3E4800f6B0",
+    "staking": "0",
+    "amount": "70"
+  },
+  {
+    "address": "0x377726c5931BF009EB5Bf1bfa3ab980785c67AFA",
+    "staking": "0",
+    "amount": "80"
+  },
+  {
+    "address": "0x12E6388e6a861Ba54aC60FBFfF4F0Ed3921FeE8D",
+    "staking": "0",
+    "amount": "1"
+  },
+  {
+    "address": "0x4f4d74826c910e4621C465f09bD4373C6cD3d5fC",
+    "staking": "0",
+    "amount": "135"
+  },
+  {
+    "address": "0x06d13d1562eb9da28C59e86e9BfC2a87d13AfB01",
+    "staking": "0",
+    "amount": "26"
+  },
+  {
+    "address": "0x954310444E7D0968aD01c7cddFbAF6ACE8A2F085",
+    "staking": "0",
+    "amount": "10"
+  },
+  {
+    "address": "0xc7a2D165f8Da6dB2eEd1Fa02503d918022F399f1",
+    "staking": "0",
+    "amount": "3"
+  },
+  {
+    "address": "0x2F7448B62134e52C2f46454d0089Ae21B5248805",
+    "staking": "0",
+    "amount": "19"
+  },
+  {
+    "address": "0x79382DEbEFC667F015D86fb2a2a5197c00785c78",
+    "staking": "0",
+    "amount": "5"
+  },
+  {
+    "address": "0x66153D49252912629dE8c2d7A359B6d87Ccd3F79",
+    "staking": "0",
+    "amount": "2"
+  },
+  {
+    "address": "0x6167F1bf679Cf30d8025c49510Cf9214b9bb3207",
+    "staking": "0",
+    "amount": "144"
+  },
+  {
+    "address": "0x1db790D057AC5D2fdb26b3614F5494bed12Ac0ca",
+    "staking": "0",
+    "amount": "198"
+  },
+  {
+    "address": "0xf854894eA7558e1A9d81353692d3C3BF93de42F4",
+    "staking": "0",
+    "amount": "105"
+  },
+  {
+    "address": "0xa7f064B2864F2c7d359e18593832C805F316187b",
+    "staking": "0",
+    "amount": "1"
+  },
+  {
+    "address": "0x10e4718a133c5Ebc546FF319201cF709F6BeCfF4",
+    "staking": "10100000000000000000000",
+    "amount": "5"
+  },
+  {
+    "address": "0xE57798ae12547a247cC3EA2793C206874030De6a",
+    "staking": "0",
+    "amount": "72"
+  },
+  {
+    "address": "0xA06131dAed9fA2c627738bccA9E9De97B47E1a38",
+    "staking": "0",
+    "amount": "2"
+  },
+  {
+    "address": "0x8078C53c405AbC6617Cc3191D94427BbFA97390d",
+    "staking": "0",
+    "amount": "59"
+  },
+  {
+    "address": "0xE6cC5e3EBB07B5156ba3aF510B8c6cA19804d88E",
+    "staking": "0",
+    "amount": "1000"
+  },
+  {
+    "address": "0xC9586690Dc0403d49D77BFEA99c5bcdA368B8fd9",
+    "staking": "0",
+    "amount": "3"
+  },
+  {
+    "address": "0x79eD68c289Bc0995ceFEC1c3Ab8c359500151ed1",
+    "staking": "0",
+    "amount": "119"
+  },
+  {
+    "address": "0x973A2653d53e263C0AB97E003F52CBCFD9f565e3",
+    "staking": "0",
+    "amount": "270"
+  },
+  {
+    "address": "0xd99694fD205Cc2c9d5EBFFc5fD5ca5cb5416Ed03",
+    "staking": "0",
+    "amount": "3"
+  },
+  {
+    "address": "0xb2df09265a57D959e7Bc52a9a3629D0E5873896B",
+    "staking": "0",
+    "amount": "14"
+  },
+  {
+    "address": "0xdD2aA8226aa238A368B4Ee5b23aF9051a0a4F81E",
+    "staking": "0",
+    "amount": "3"
+  },
+  {
+    "address": "0xBf80F4729739C3DDD2DF1977B8678d4B1aCf51C3",
+    "staking": "0",
+    "amount": "20"
+  },
+  {
+    "address": "0xb812d66FB8715539cd4C1d0eF3bc237F37ED5001",
+    "staking": "0",
+    "amount": "3"
+  },
+  {
+    "address": "0x5cEd3942Cf01c4D9BbDd189F5F7edf9789126F41",
+    "staking": "0",
+    "amount": "1"
+  },
+  {
+    "address": "0x649690416383D9b2605a9AAE84131cCC6164FD46",
+    "staking": "0",
+    "amount": "60"
+  },
+  {
+    "address": "0x2a5b12c7880F277579AB86388203f7E17F7ff2d0",
+    "staking": "0",
+    "amount": "350"
+  },
+  {
+    "address": "0x5525F8b96d717bAB4563CB180979f324db65EfCd",
+    "staking": "0",
+    "amount": "1"
+  },
+  {
+    "address": "0x0A633935262518C8F4bDCCCE0aecFfeDBB1E88D7",
+    "staking": "0",
+    "amount": "21"
+  },
+  {
+    "address": "0x88829b6cFbd56148DBc170C11ff935DEB76EB55C",
+    "staking": "25800000000000000000000",
+    "amount": "61"
+  },
+  {
+    "address": "0xB224fAC3456408EaD8cb9AdD7ef1878887fcDCCD",
+    "staking": "0",
+    "amount": "15"
+  },
+  {
+    "address": "0xa1D5E9CB4f6a09fcF8b938435b0DE63270C67537",
+    "staking": "0",
+    "amount": "2103"
+  },
+  {
+    "address": "0xA8CC1ECBC9830A03DF8bfC1C1767509DeA8F4acE",
+    "staking": "0",
+    "amount": "3500"
+  },
+  {
+    "address": "0xeaFb25cf3Ca2e26E2fFbb825f2f50b10F7f32605",
+    "staking": "0",
+    "amount": "3"
+  },
+  {
+    "address": "0xF9430BD5ff002F2425014D067148F889f0a27F43",
+    "staking": "0",
+    "amount": "4231"
+  },
+  {
+    "address": "0xe8f05212e5755a10895E4Daa3ab75e347793d124",
+    "staking": "0",
+    "amount": "32"
+  },
+  {
+    "address": "0x453F70f9d222845EDD5D0BE4Ce088ED7dFD529E2",
+    "staking": "0",
+    "amount": "80"
+  },
+  {
+    "address": "0xC1c2e9A7aD7C5273255Eb34eCf12Ac6beB5A1678",
+    "staking": "0",
+    "amount": "16"
+  },
+  {
+    "address": "0x831bD61e37e7407F9fF0968A7145BD918a1010B1",
+    "staking": "0",
+    "amount": "3"
+  },
+  {
+    "address": "0x09b17830Cb4a734AB8b66d2bb7e6B97111076EA1",
+    "staking": "0",
+    "amount": "2"
+  },
+  {
+    "address": "0xaB8d6F3049714fBf112090536b2C08d3329921F7",
+    "staking": "0",
+    "amount": "100"
+  },
+  {
+    "address": "0xC13624B31b5164e2900054aC9F9f21289a8112F6",
+    "staking": "0",
+    "amount": "45"
+  },
+  {
+    "address": "0xaBBE82583cC134EA39E826EbCe1Bb2404FE88c77",
+    "staking": "0",
+    "amount": "5"
+  },
+  {
+    "address": "0x33e2EB3fB3Cd279671c04C63F7d1A864D7E3A4a7",
+    "staking": "0",
+    "amount": "3"
+  },
+  {
+    "address": "0xbB66Bfa31AD6e4fFE658dFa0599aeFD4696E4aE4",
+    "staking": "0",
+    "amount": "4"
+  },
+  {
+    "address": "0x4c7257a195c05A66D7c5912C346dF5B162053B3f",
+    "staking": "0",
+    "amount": "5"
+  },
+  {
+    "address": "0x054c3f238FD1530de48eDd9BF88bbF66f4Ae4981",
+    "staking": "0",
+    "amount": "50"
+  },
+  {
+    "address": "0xDb5858C302E52064F63ABB3D5C0f58BdEed49fe5",
+    "staking": "0",
+    "amount": "100"
+  },
+  {
+    "address": "0x72B82453Dd27c774F5488dc90685C26670C71144",
+    "staking": "0",
+    "amount": "10"
+  },
+  {
+    "address": "0xC46e0710391BB1a17Fabaf1328B58aAeABb8DC6d",
+    "staking": "0",
+    "amount": "9"
+  },
+  {
+    "address": "0xE4a280053E244971A378a8f51CA4F3be11f8DdAE",
+    "staking": "0",
+    "amount": "30"
+  },
+  {
+    "address": "0x386BBD47278F632e20f46b9b477d7adC698fB53F",
+    "staking": "0",
+    "amount": "5"
+  },
+  {
+    "address": "0xcC20F6c112536b1280cfC38531e037A2B76c87C7",
+    "staking": "0",
+    "amount": "19"
+  },
+  {
+    "address": "0x27503a68de1dfd3dC059fB9468435e4b9C1CaA1b",
+    "staking": "0",
+    "amount": "21683"
+  },
+  {
+    "address": "0x0cD85302F0B6387aaEB645FC69A95900cdcA842B",
+    "staking": "0",
+    "amount": "95"
+  },
+  {
+    "address": "0x5aE2d4dab5881fbF2a5dCD3ccDCf5190Cf69293b",
+    "staking": "0",
+    "amount": "3"
+  },
+  {
+    "address": "0xf406aed3369614123eB6c8ea6afB12995D49dBdB",
+    "staking": "0",
+    "amount": "1"
+  },
+  {
+    "address": "0x448BC8B5f99C45D6433698C8a11D589aE28Af73D",
+    "staking": "0",
+    "amount": "12"
+  },
+  {
+    "address": "0x31d0e99CAd9F8C9088C2C749342C13b8CecC8829",
+    "staking": "0",
+    "amount": "5"
+  },
+  {
+    "address": "0xEB189E872D3FD10801A535254EcDEe37a3aF61db",
+    "staking": "0",
+    "amount": "1"
+  },
+  {
+    "address": "0xfB72A1D982b0D65BBf325A4FEe7Cf54976792fFB",
+    "staking": "0",
+    "amount": "1"
+  },
+  {
+    "address": "0x5280537847c00723a2E710349390bFF199661Cd3",
+    "staking": "0",
+    "amount": "974"
+  },
+  {
+    "address": "0x9054705b001859A468ec70A645F71060cC175291",
+    "staking": "0",
+    "amount": "3"
+  },
+  {
+    "address": "0xb16B5Bb24C9F48E8F9fC67f3ce8f7B7BEE37f471",
+    "staking": "0",
+    "amount": "1"
+  },
+  {
+    "address": "0xB7dD3ce7A7b25b294c7dfBD5C01F116d8EF8b99E",
+    "staking": "0",
+    "amount": "4"
+  },
+  {
+    "address": "0xEaDC8f8DD75C95C7b92dB6D1c7129DD8631B5ea2",
+    "staking": "0",
+    "amount": "1"
+  }
+]
