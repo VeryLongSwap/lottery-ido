@@ -1,1 +1,1 @@
-anvil --fork-url https://rpc.startale.com/astar-zkevm
+anvil --fork-url https://rpc.startale.com/astar-zkevm --fork-block-number 3888305
