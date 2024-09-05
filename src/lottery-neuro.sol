@@ -46,6 +46,7 @@ contract NeuroIDO is AccessControl, ReentrancyGuard, StructList {
 
     // Create a new role identifier for the minter role
     bytes32 public constant OPERATOR_ROLE = keccak256("OPERATOR_ROLE");
+    bytes32 public constant SET_RESULT_ROLE = keccak256("SET_RESULT_ROLE");
 
     uint256[] public totalCommitments;
     uint256[] public consumedTokens;
@@ -189,7 +190,7 @@ contract NeuroIDO is AccessControl, ReentrancyGuard, StructList {
     }
 
 
-    function setResult(SetResultArgs[] memory _data) external onlyRole(OPERATOR_ROLE) {
+    function setResult(SetResultArgs[] memory _data) external onlyRole(SET_RESULT_ROLE) {
         uint dataLength = _data.length;
         uint buyerTokensLength = buyerTokens.length;
         for(uint i = 0; i < dataLength; ++i){
