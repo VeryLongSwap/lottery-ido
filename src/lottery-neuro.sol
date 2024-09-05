@@ -9,7 +9,6 @@ import "openzeppelin-contracts/contracts/utils/math/Math.sol";
 
 contract StructList {
     struct UserInfo {   
-
         uint256[] tickets;
         uint256  finalTokens;
         uint256 finalEmissions;
