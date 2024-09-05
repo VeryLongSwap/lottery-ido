@@ -29,15 +29,17 @@ contract NeuroIDO is AccessControl, ReentrancyGuard, StructList {
     using ECDSA for bytes32;
 
     IERC20[] public buyerTokens;
-    IERC20 public immutable salesToken;
+    IERC20 public salesToken;
+
     uint256 public immutable tokensToSell;
     uint256 public immutable totalEmission;
-    uint256 public immutable startTime;
-    uint256 public immutable endTime;
-    uint256 public immutable receiveTime;
     address public immutable burnAddress;
 
     uint256[] public tokensPerTicket;
+
+    uint256 public startTime;
+    uint256 public endTime;
+    uint256 public receiveTime;
 
     bool public startFlg;
     bool public claimFlg;
@@ -143,6 +145,7 @@ contract NeuroIDO is AccessControl, ReentrancyGuard, StructList {
     function refund(uint _index) external nonReentrant {
         require(block.timestamp >= receiveTime, "not claimable yet");
         require(_index < buyerTokens.length, "invalid index");
+        require(claimFlg == true, "claim flg not apply");
         
         require(userInfos[msg.sender].noRefund[_index] == false &&
             userInfos[msg.sender].tickets[_index] >
@@ -201,12 +204,19 @@ contract NeuroIDO is AccessControl, ReentrancyGuard, StructList {
         require(tokensToUserGrant <= tokensToSell, "over tokenAmount");
     }
 
+    /*
+      Operator 用
+    */
     function setConsumedTokens(uint _index, uint _amount) external onlyRole(OPERATOR_ROLE) {
         consumedTokens[_index] = _amount;
     }
 
     function setTokensToUserGrant(uint _amount) external onlyRole(OPERATOR_ROLE) {
         tokensToUserGrant = _amount;
+    }
+
+    function setSalesToken(IERC20 _salesToken) external onlyRole(OPERATOR_ROLE) {
+       salesToken = _salesToken;
     }
 
     /*
@@ -218,6 +228,22 @@ contract NeuroIDO is AccessControl, ReentrancyGuard, StructList {
 
     function setClaimFlg(bool _claimFlg) external onlyRole(OPERATOR_ROLE) {
         claimFlg = _claimFlg;
+    }
+
+    /*
+      Date 管理
+    */
+
+    function setStartTime(uint256 _startTime) external onlyRole(OPERATOR_ROLE) {
+        startTime = _startTime;
+    }
+
+    function setEndTime(uint256 _endTime) external onlyRole(OPERATOR_ROLE) {
+        endTime = _endTime;
+    }
+
+    function setReceiveTime(uint256 _receiveTime) external onlyRole(OPERATOR_ROLE) {
+        receiveTime = _receiveTime;
     }
 
 }
