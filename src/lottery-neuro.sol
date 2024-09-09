@@ -5,7 +5,7 @@ import "openzeppelin-contracts/contracts/utils/ReentrancyGuard.sol";
 import "openzeppelin-contracts/contracts/token/ERC20/utils/SafeERC20.sol";
 import "openzeppelin-contracts/contracts/utils/cryptography/ECDSA.sol";
 import "openzeppelin-contracts/contracts/utils/math/Math.sol";
-
+import { IWETH } from "./IWETH.sol";
 
 contract StructList {
     struct UserInfo {   
@@ -24,7 +24,7 @@ contract StructList {
         uint256[] wonTicketsAmount;
     }
 }
-contract NeuroIDO is AccessControl, ReentrancyGuard, StructList {
+contract LotteryIDO is AccessControl, ReentrancyGuard, StructList {
     using SafeERC20 for IERC20;
     using ECDSA for bytes32;
 
@@ -32,8 +32,9 @@ contract NeuroIDO is AccessControl, ReentrancyGuard, StructList {
     IERC20 public salesToken;
 
     uint256 public immutable tokensToSell;
-    uint256 public immutable totalEmission;
     address public immutable burnAddress;
+
+    address public wnative;
 
     uint256[] public tokensPerTicket;
 
@@ -62,15 +63,9 @@ contract NeuroIDO is AccessControl, ReentrancyGuard, StructList {
         IERC20[] memory _buyerTokens,
         uint256 _tokensToSell,
         uint256 _startTime,
-        
         uint256 _endTime,
-        
         uint256 _receiveTime,
-            
         uint256[] memory _tokensPerTicket,
-        
-        uint256 _totalEmission,
-        
         address _burnAddress
     ) {
         require(_startTime >= block.timestamp, "Start time must be in the future.");
@@ -90,11 +85,13 @@ contract NeuroIDO is AccessControl, ReentrancyGuard, StructList {
         endTime = _endTime;
         receiveTime = _receiveTime;
         tokensPerTicket = _tokensPerTicket;
-        totalEmission = _totalEmission;
         burnAddress = _burnAddress;
+
+        wnative = address(0);
 
         _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
         _grantRole(OPERATOR_ROLE, msg.sender);
+        _grantRole(SET_RESULT_ROLE, msg.sender);
     }
 
     function returnUserInfo(address _addr) external view returns (UserInfo memory) {
@@ -105,10 +102,14 @@ contract NeuroIDO is AccessControl, ReentrancyGuard, StructList {
         return (buyerTokens, startTime, endTime, tokensPerTicket, tokensToSell, totalCommitments);
     }
     
-    function commit(uint _amount, address _token) external payable nonReentrant {
+    function setWNative(address _address) external onlyRole(DEFAULT_ADMIN_ROLE) {
+        wnative = _address;
+    }
+
+    function commit(uint _amount, address _token) external nonReentrant {
         require(
             startFlg && block.timestamp >= startTime && block.timestamp < endTime,
-            "Can only deposit Ether during the sale period."
+            "Can only deposit token during the sale period."
         );
 
         require(_amount > 0, "Commitment amount is outside the allowed range.");
@@ -132,6 +133,36 @@ contract NeuroIDO is AccessControl, ReentrancyGuard, StructList {
         emit Commit(msg.sender, _token, _amount);
     }
 
+    function commitWithNative(uint _amount) external payable nonReentrant {
+        require(
+            startFlg && block.timestamp >= startTime && block.timestamp < endTime,
+            "Can only deposit native token during the sale period."
+        );
+
+        require(_amount > 0, "Commitment amount is outside the allowed range.");
+
+        require(wnative != address(0), "wnative is not set");
+
+        (bool _success, uint _tokenIndex) = _checkAvailableToken(wnative);
+        require(_success, "this token is not available");
+
+        require(msg.value == _amount * tokensPerTicket[_tokenIndex], "wrong value");
+        IWETH(address(buyerTokens[_tokenIndex])).deposit{value: _amount * tokensPerTicket[_tokenIndex]}();
+
+        if (userInfos[msg.sender].tickets.length == 0) {
+            for (uint i = 0; i < buyerTokens.length; ++i){
+                userInfos[msg.sender].tickets.push(0);
+                userInfos[msg.sender].noRefund.push(false);
+                userInfos[msg.sender].wonTickets.push(0);
+            }
+        }
+
+        userInfos[msg.sender].tickets[_tokenIndex] += _amount;
+        totalCommitments[_tokenIndex] += _amount * tokensPerTicket[_tokenIndex];
+
+        emit Commit(msg.sender, wnative, _amount);
+    }
+
     function _checkAvailableToken(address _token) internal view returns (bool, uint) {
         uint buyerTokensLength = buyerTokens.length;
         for (uint i = 0; i < buyerTokensLength; ++i) {
@@ -153,6 +184,26 @@ contract NeuroIDO is AccessControl, ReentrancyGuard, StructList {
             userInfos[msg.sender].wonTickets[_index], "No refunds available");
         userInfos[msg.sender].noRefund[_index] = true;
         buyerTokens[_index].safeTransfer(msg.sender, (userInfos[msg.sender].tickets[_index] - userInfos[msg.sender].wonTickets[_index]) * tokensPerTicket[_index]);
+    }
+
+    function refundWithNative() external nonReentrant {
+        require(block.timestamp >= receiveTime, "not claimable yet");
+        require(wnative != address(0), "wnative is not set");
+        require(claimFlg == true, "claim flg not apply");
+        
+        (bool _success, uint _index) = _checkAvailableToken(wnative);
+        require(_success, "this token is not available");
+
+        require(userInfos[msg.sender].noRefund[_index] == false &&
+            userInfos[msg.sender].tickets[_index] >
+            userInfos[msg.sender].wonTickets[_index], "No refunds available");
+
+        userInfos[msg.sender].noRefund[_index] = true;
+        uint _amount = (userInfos[msg.sender].tickets[_index] - userInfos[msg.sender].wonTickets[_index]) * tokensPerTicket[_index];
+        IWETH(address(buyerTokens[_index])).withdraw(_amount);
+
+        (bool success, ) = payable(msg.sender).call{value: _amount}('');
+        require(success, "Ether transfer failed");
     }
 
     function claim() external nonReentrant {
@@ -189,6 +240,14 @@ contract NeuroIDO is AccessControl, ReentrancyGuard, StructList {
         }
     }
 
+    function depositToken(
+        IERC20 _token,
+        uint256 _amount
+    ) external payable onlyRole(DEFAULT_ADMIN_ROLE) {
+        if (address(_token) != address(0)) {
+            _token.transferFrom(msg.sender, address(this), _amount);
+        }
+    }
 
     function setResult(SetResultArgs[] memory _data) external onlyRole(SET_RESULT_ROLE) {
         uint dataLength = _data.length;
@@ -204,6 +263,10 @@ contract NeuroIDO is AccessControl, ReentrancyGuard, StructList {
         }
         require(tokensToUserGrant <= tokensToSell, "over tokenAmount");
     }
+
+    receive() external payable nonReentrant() {
+    }
+
 
     /*
       Operator 用
@@ -246,5 +309,4 @@ contract NeuroIDO is AccessControl, ReentrancyGuard, StructList {
     function setReceiveTime(uint256 _receiveTime) external onlyRole(OPERATOR_ROLE) {
         receiveTime = _receiveTime;
     }
-
 }

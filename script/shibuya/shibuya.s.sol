@@ -2,7 +2,7 @@
 pragma solidity ^0.8.13;
 
 import {Script, console} from "forge-std/Script.sol";
-import {OverflowICO, StructList} from "../src/lottery.sol";
+import {LotteryIDO, StructList} from "src/lottery-neuro.sol";
 import {ERC20} from "openzeppelin-contracts/contracts/token/ERC20/ERC20.sol";
 import {IERC20} from "openzeppelin-contracts/contracts/token/ERC20/IERC20.sol";
 
@@ -22,15 +22,15 @@ contract USDCSendTest is Script {
 contract IDOStart is Script {
     address public USDC = 0xA8CE8aee21bC2A48a5EF670afCc9274C7bbbC035;
     address public BONSAI = 0x90E3F8e749dBD40286AB29AecD1E8487Db4a8785;
-    OverflowICO public ido =
-        OverflowICO(0x395D4ad692cF61c9324F528aF191b2B8d2eA0d58);
+    LotteryIDO public ido =
+        LotteryIDO(0x395D4ad692cF61c9324F528aF191b2B8d2eA0d58);
 
     function run() public {
         vm.startBroadcast();
         console.log("IDO Started");
         IERC20(USDC).approve(address(ido), type(uint256).max);
         IERC20(address(BONSAI)).approve(address(ido), type(uint256).max);
-        ido.start();
+        ido.setStartFlg(true);
 
         vm.stopBroadcast();
     }
@@ -49,8 +49,8 @@ contract IDOSetResult is Script {
     // CSVデータを直接配列として定義
     JSONData[] csv;
 
-    OverflowICO public ido =
-        OverflowICO(0x395D4ad692cF61c9324F528aF191b2B8d2eA0d58);
+    LotteryIDO public ido =
+        LotteryIDO(0x395D4ad692cF61c9324F528aF191b2B8d2eA0d58);
 
     function run() public {
         vm.startBroadcast();
@@ -84,44 +84,48 @@ contract IDOSetResult is Script {
 }
 
 contract Deploy is Script {
-    OverflowICO public ido;
+    LotteryIDO public ido;
     ERC20 public buyerToken;
+    ERC20 public salesToken1;
 
-    uint public startTime = 1719799198;
-    uint public endTime = 1720580400;
-    uint public claimTime = 1720774800;
-    uint public tokensToSell = 8031000000000 * 1e18;
+    address public user = 0x0f7bF2e6BEbf3d352405B0f855d4B6fC6Fe50b3F;
+    address public user2 = 0xDD47792c1A9f8F12a44c299f1be85FFD72A4B746;
+    uint public startTime = 1725753503;
+    uint public endTime = startTime + 1000;
+    uint public receiveTime = 9725671319;
+    uint public tokensToSell = 5e23;
     address public dead = 0x000000000000000000000000000000000000dEaD;
-
-    address public USDC = 0xA8CE8aee21bC2A48a5EF670afCc9274C7bbbC035;
-    address deployer = 0x944C6C8882012CcD4FFd2911a7F1fDC520c9a561;
-    address public BONSAI = 0x90E3F8e749dBD40286AB29AecD1E8487Db4a8785;
+    
+    // address public rewa = 0x3a417daa908584751de3a79baa90F33509a7825d;
+    address public USDC = 0x7125e7d95c520c0835b5fcbad72A1C3c55E83269;
+    address public coco = 0x233dfe71938f7EeE618D4bdddC538598fAfbaE8D;
+    address deployer = user;
 
     IERC20[] public buyerTokens;
-    uint[] public tokensPerTickets = [10 * 1e6];
+    uint[] public tokensPerTickets = [1e6, 1e21];
 
     function run() public {
-        vm.startBroadcast();
+        vm.startBroadcast(deployer);
+
+
         buyerTokens.push(IERC20(USDC));
-
-        // Ensure USDC contract exists and has code
-        require(address(USDC).code.length > 0, "USDC contract does not exist");
-
-        ido = new OverflowICO(
-            IERC20(address(BONSAI)),
+        buyerTokens.push(IERC20(coco));
+        //buyerTokens.push(IERC20(isom));
+        ido = new LotteryIDO(
             buyerTokens,
             tokensToSell,
             startTime,
             endTime,
-            claimTime,
-            0,
-            0,
-            0,
+            receiveTime,
             tokensPerTickets,
-            0,
             dead
         );
+        buyerTokens[0].approve(address(ido), type(uint256).max);
+        //buyerTokens[1].approve(address(ido), type(uint256).max);
+
+        ido.setStartFlg(true);
 
         vm.stopBroadcast();
     }
 }
+
