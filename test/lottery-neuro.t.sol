@@ -85,7 +85,6 @@ contract CounterTest is Test, StructList {
         uint beforeNative = address(user).balance;
 
         ido.commitWithNative{value: 1e18}(1);
-        console.log("hamati", WETH9(weth).balanceOf(address(ido)));
         assertEq(beforeNative - 1 * ido.tokensPerTicket(2), address(user).balance);
 
         StructList.UserInfo memory userInfo;

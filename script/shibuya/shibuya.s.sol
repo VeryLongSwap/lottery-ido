@@ -18,7 +18,7 @@ contract USDCSendTest is Script {
     }
     
 }
-
+/*
 contract IDOStart is Script {
     address public USDC = 0xA8CE8aee21bC2A48a5EF670afCc9274C7bbbC035;
     address public BONSAI = 0x90E3F8e749dBD40286AB29AecD1E8487Db4a8785;
@@ -82,7 +82,7 @@ contract IDOSetResult is Script {
         vm.stopBroadcast();
     }
 }
-
+*/
 contract Deploy is Script {
     LotteryIDO public ido;
     ERC20 public buyerToken;
@@ -90,26 +90,27 @@ contract Deploy is Script {
 
     address public user = 0x0f7bF2e6BEbf3d352405B0f855d4B6fC6Fe50b3F;
     address public user2 = 0xDD47792c1A9f8F12a44c299f1be85FFD72A4B746;
-    uint public startTime = 1725753503;
-    uint public endTime = startTime + 1000;
+    uint public startTime = 1725959035;
+    uint public endTime = startTime + 4000;
     uint public receiveTime = 9725671319;
     uint public tokensToSell = 5e23;
     address public dead = 0x000000000000000000000000000000000000dEaD;
     
-    // address public rewa = 0x3a417daa908584751de3a79baa90F33509a7825d;
-    address public USDC = 0x7125e7d95c520c0835b5fcbad72A1C3c55E83269;
-    address public coco = 0x233dfe71938f7EeE618D4bdddC538598fAfbaE8D;
+    address public WETH = 0xB182D0A7BE7846c78CbebDC7C7C1CE7D686a0AC4;
+    address public USDC = 0x6dbBeaa5671b7B922Bf77C10389a4b5781d47E9A;
+    address public USDT = 0x3BCd5172FA59a1826C30B002c8545A16996653E2;
     address deployer = user;
 
     IERC20[] public buyerTokens;
-    uint[] public tokensPerTickets = [1e6, 1e21];
+    uint[] public tokensPerTickets = [1e6, 1e10, 1e16];
 
     function run() public {
         vm.startBroadcast(deployer);
 
 
         buyerTokens.push(IERC20(USDC));
-        buyerTokens.push(IERC20(coco));
+        buyerTokens.push(IERC20(USDT));
+        buyerTokens.push(IERC20(WETH));
         //buyerTokens.push(IERC20(isom));
         ido = new LotteryIDO(
             buyerTokens,
@@ -120,9 +121,9 @@ contract Deploy is Script {
             tokensPerTickets,
             dead
         );
-        buyerTokens[0].approve(address(ido), type(uint256).max);
+        //buyerTokens[0].approve(address(ido), type(uint256).max);
         //buyerTokens[1].approve(address(ido), type(uint256).max);
-
+        ido.setWNative(WETH);
         ido.setStartFlg(true);
 
         vm.stopBroadcast();

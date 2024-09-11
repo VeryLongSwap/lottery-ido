@@ -51,6 +51,8 @@ contract LotteryIDO is AccessControl, ReentrancyGuard, StructList {
 
     uint256[] public totalCommitments;
     uint256[] public consumedTokens;
+    uint256 public totalTickets
+    ;
     uint256 public tokensToUserGrant;
 
     mapping(address => UserInfo) public userInfos;
@@ -87,6 +89,7 @@ contract LotteryIDO is AccessControl, ReentrancyGuard, StructList {
         tokensPerTicket = _tokensPerTicket;
         burnAddress = _burnAddress;
 
+        totalTickets = 0;
         wnative = address(0);
 
         _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
@@ -128,6 +131,7 @@ contract LotteryIDO is AccessControl, ReentrancyGuard, StructList {
         }
 
         userInfos[msg.sender].tickets[_tokenIndex] += _amount;
+        totalTickets += _amount;
         totalCommitments[_tokenIndex] += _amount * tokensPerTicket[_tokenIndex];
 
         emit Commit(msg.sender, _token, _amount);
@@ -158,6 +162,7 @@ contract LotteryIDO is AccessControl, ReentrancyGuard, StructList {
         }
 
         userInfos[msg.sender].tickets[_tokenIndex] += _amount;
+        totalTickets += _amount;
         totalCommitments[_tokenIndex] += _amount * tokensPerTicket[_tokenIndex];
 
         emit Commit(msg.sender, wnative, _amount);
@@ -264,7 +269,7 @@ contract LotteryIDO is AccessControl, ReentrancyGuard, StructList {
         require(tokensToUserGrant <= tokensToSell, "over tokenAmount");
     }
 
-    receive() external payable nonReentrant() {
+    receive() external payable {
     }
 
 
