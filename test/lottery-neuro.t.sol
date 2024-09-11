@@ -86,7 +86,7 @@ contract CounterTest is Test, StructList {
 
         ido.commitWithNative{value: 1e18}(1);
         assertEq(beforeNative - 1 * ido.tokensPerTicket(2), address(user).balance);
-
+        assertEq(ido.totalTickets(), 3);
         StructList.UserInfo memory userInfo;
 
         userInfo = ido.returnUserInfo(user);
