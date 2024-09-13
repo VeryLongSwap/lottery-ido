@@ -101,8 +101,8 @@ contract LotteryIDO is AccessControl, ReentrancyGuard, StructList {
         return userInfos[_addr];
     }
 
-    function getStatus() external view returns (IERC20[] memory, uint, uint, uint[] memory, uint, uint[] memory) {
-        return (buyerTokens, startTime, endTime, tokensPerTicket, tokensToSell, totalCommitments);
+    function getStatus() external view returns (IERC20[] memory, uint, uint, uint[] memory, uint, uint[] memory, uint) {
+        return (buyerTokens, startTime, endTime, tokensPerTicket, tokensToSell, totalCommitments, totalTickets);
     }
     
     function setWNative(address _address) external onlyRole(DEFAULT_ADMIN_ROLE) {
@@ -120,7 +120,7 @@ contract LotteryIDO is AccessControl, ReentrancyGuard, StructList {
         (bool _success, uint _tokenIndex) = _checkAvailableToken(_token);
         require(_success, "this token is not available");
 
-        IERC20(buyerTokens[_tokenIndex]).transferFrom(msg.sender, address(this), _amount * tokensPerTicket[_tokenIndex]);
+        IERC20(buyerTokens[_tokenIndex]).safeTransferFrom(msg.sender, address(this), _amount * tokensPerTicket[_tokenIndex]);
 
         if (userInfos[msg.sender].tickets.length == 0) {
             for (uint i = 0; i < buyerTokens.length; ++i){
@@ -250,7 +250,7 @@ contract LotteryIDO is AccessControl, ReentrancyGuard, StructList {
         uint256 _amount
     ) external payable onlyRole(DEFAULT_ADMIN_ROLE) {
         if (address(_token) != address(0)) {
-            _token.transferFrom(msg.sender, address(this), _amount);
+            _token.safeTransferFrom(msg.sender, address(this), _amount);
         }
     }
 

@@ -90,13 +90,13 @@ contract Deploy is Script {
 
     address public user = 0x0f7bF2e6BEbf3d352405B0f855d4B6fC6Fe50b3F;
     address public user2 = 0xDD47792c1A9f8F12a44c299f1be85FFD72A4B746;
-    uint public startTime = 1725974455;
-    uint public endTime = startTime + 64800;
+    uint public startTime = 1726154961;
+    uint public endTime = startTime + 9000;
     uint public receiveTime = 9725671319;
     uint public tokensToSell = 5e23;
     address public dead = 0x000000000000000000000000000000000000dEaD;
     
-    address public USDT = 0xaC3a9B3cFD2C85E77d8140f0c412363acBE895B5;
+    address public USDT = 0xb8744EA261416ff9b78fC8D5990754f80b9c9B03;
     address public USDC = 0xc318cDe4aCBE774eF3716B0478cf7E3409c47A39;
     address public WETH = 0x2D9235a1dB6552E2504F9F6783C9655270Ee49EB;
     address deployer = user;
@@ -123,7 +123,7 @@ contract Deploy is Script {
         );
         //buyerTokens[0].approve(address(ido), type(uint256).max);
         //buyerTokens[1].approve(address(ido), type(uint256).max);
-
+        ido.setWNative(WETH);
         ido.setStartFlg(true);
 
         vm.stopBroadcast();

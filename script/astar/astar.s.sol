@@ -90,19 +90,19 @@ contract Deploy is Script {
 
     address public user = 0x0f7bF2e6BEbf3d352405B0f855d4B6fC6Fe50b3F;
     address public user2 = 0xDD47792c1A9f8F12a44c299f1be85FFD72A4B746;
-    uint public startTime = 1726151601;
-    uint public endTime = startTime + 9000;
+    uint public startTime = 1726192113;
+    uint public endTime = startTime + 54000;
     uint public receiveTime = 9725671319;
-    uint public tokensToSell = 5e23;
+    uint public tokensToSell = 160000 ether;
     address public dead = 0x000000000000000000000000000000000000dEaD;
     
-    address public WETH = 0x86e7AAF81812660A46EA6f751EF58d00076e23a4;
-    address public USDC = 0x6dbBeaa5671b7B922Bf77C10389a4b5781d47E9A;
-    address public USDT = 0x3BCd5172FA59a1826C30B002c8545A16996653E2;
+    address public WETH = 0xAeaaf0e2c81Af264101B9129C00F4440cCF0F720;
+    //address public USDC = 0x6dbBeaa5671b7B922Bf77C10389a4b5781d47E9A;
+    //address public USDT = 0x3BCd5172FA59a1826C30B002c8545A16996653E2;
     address deployer = user;
 
     IERC20[] public buyerTokens;
-    uint[] public tokensPerTickets = [1e15];
+    uint[] public tokensPerTickets = [1.738 ether];
 
     function run() public {
         vm.startBroadcast(deployer);

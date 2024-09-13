@@ -90,26 +90,26 @@ contract Deploy is Script {
 
     address public user = 0x0f7bF2e6BEbf3d352405B0f855d4B6fC6Fe50b3F;
     address public user2 = 0xDD47792c1A9f8F12a44c299f1be85FFD72A4B746;
-    uint public startTime = 1726151601;
-    uint public endTime = startTime + 9000;
+    uint public startTime = 1726192113;
+    uint public endTime = startTime + 54000;
     uint public receiveTime = 9725671319;
-    uint public tokensToSell = 5e23;
+    uint public tokensToSell = 160000 ether;
     address public dead = 0x000000000000000000000000000000000000dEaD;
     
-    address public WETH = 0x86e7AAF81812660A46EA6f751EF58d00076e23a4;
-    address public USDC = 0x6dbBeaa5671b7B922Bf77C10389a4b5781d47E9A;
-    address public USDT = 0x3BCd5172FA59a1826C30B002c8545A16996653E2;
+    address public WETH = 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2 ;
+    address public USDC = 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48;
+    address public USDT = 0xdAC17F958D2ee523a2206206994597C13D831ec7;
     address deployer = user;
 
     IERC20[] public buyerTokens;
-    uint[] public tokensPerTickets = [1e15];
+    uint[] public tokensPerTickets = [1e5, 1e5, 0.000043 ether];
 
     function run() public {
         vm.startBroadcast(deployer);
 
 
-        //buyerTokens.push(IERC20(USDC));
-        //buyerTokens.push(IERC20(USDT));
+        buyerTokens.push(IERC20(USDC));
+        buyerTokens.push(IERC20(USDT));
         buyerTokens.push(IERC20(WETH));
         //buyerTokens.push(IERC20(isom));
         ido = new LotteryIDO(
