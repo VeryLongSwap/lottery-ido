@@ -90,7 +90,7 @@ contract Deploy is Script {
 
     address public user = 0x0f7bF2e6BEbf3d352405B0f855d4B6fC6Fe50b3F;
     address public user2 = 0xDD47792c1A9f8F12a44c299f1be85FFD72A4B746;
-    uint public startTime = 1726154961;
+    uint public startTime = 1726263033;
     uint public endTime = startTime + 9000;
     uint public receiveTime = 9725671319;
     uint public tokensToSell = 5e23;

@@ -84,15 +84,15 @@ contract CounterTest is Test, StructList {
 
         uint beforeNative = address(user).balance;
 
-        ido.commitWithNative{value: 1e18}(1);
-        assertEq(beforeNative - 1 * ido.tokensPerTicket(2), address(user).balance);
-        assertEq(ido.totalTickets(), 3);
+        ido.commitWithNative{value: 2e18}(2);
+        assertEq(beforeNative - 2 * ido.tokensPerTicket(2), address(user).balance);
+        assertEq(ido.totalTickets(), 4);
         StructList.UserInfo memory userInfo;
 
         userInfo = ido.returnUserInfo(user);
 
         assertEq(userInfo.tickets[0], 2);
-        assertEq(userInfo.tickets[2], 1);
+        assertEq(userInfo.tickets[2], 2);
 
         assertEq(
             beforeBuyerToken0 - 2 * ido.tokensPerTicket(0),
@@ -105,7 +105,7 @@ contract CounterTest is Test, StructList {
         uint[] memory wonTickets = new uint[](3);
         wonTickets[0] = 2;
         wonTickets[1] = 0;
-        wonTickets[2] = 0;
+        wonTickets[2] = 1;
         setResultArgs[0] = SetResultArgs(user, 1e18, wonTickets);
 
         ido.commit(3, address(buyerTokens[0]));
@@ -134,11 +134,14 @@ contract CounterTest is Test, StructList {
         vm.expectRevert("No refunds available");
         ido.refund(0);
 
-        assertEq(address(weth).balance, 1e18);
+        assertEq(address(weth).balance, 2e18);
 
         vm.prank(user);
         ido.refundWithNative();
-        assertEq(address(user).balance, 2e18);
+        assertEq(address(user).balance, 1e18);
+        vm.prank(user);
+        vm.expectRevert("No refunds available");
+        ido.refundWithNative();
     }
 /*
     function testFinishBeforeClaim() public {

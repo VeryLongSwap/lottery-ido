@@ -101,8 +101,8 @@ contract LotteryIDO is AccessControl, ReentrancyGuard, StructList {
         return userInfos[_addr];
     }
 
-    function getStatus() external view returns (IERC20[] memory, uint, uint, uint[] memory, uint, uint[] memory, uint) {
-        return (buyerTokens, startTime, endTime, tokensPerTicket, tokensToSell, totalCommitments, totalTickets);
+    function getStatus() external view returns (IERC20[] memory, uint, uint, uint[] memory, uint, uint[] memory, uint, bool, bool) {
+        return (buyerTokens, startTime, endTime, tokensPerTicket, tokensToSell, totalCommitments, totalTickets, claimFlg, startFlg);
     }
     
     function setWNative(address _address) external onlyRole(DEFAULT_ADMIN_ROLE) {
