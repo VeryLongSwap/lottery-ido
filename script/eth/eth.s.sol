@@ -88,10 +88,9 @@ contract Deploy is Script {
     ERC20 public buyerToken;
     ERC20 public salesToken1;
 
-    uint public startTime = 1726473600;
-    uint public endTime = 1726819200;
-    uint public receiveTime = 1726905600;
-
+    uint public startTime = 1726488000;
+    uint public endTime = 1726833600;
+    uint public receiveTime = 1726920000;
 
     uint public tokensToSell = 160000 ether;
     address public dead = 0x000000000000000000000000000000000000dEaD;

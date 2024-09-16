@@ -4,5 +4,5 @@ forge verify-contract --watch \
   --via-ir \
   --chain-id 1 \
   --constructor-args-path script/eth/constructor-args.txt \
-  0xe344dfc5906904af2186c7ee62a5754af119a4e3 \
+  0x4f518a09a9732e4c19aeb3598cf5349651b0a827 \
   src/lottery-neuro.sol:LotteryIDO
