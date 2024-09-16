@@ -88,30 +88,28 @@ contract Deploy is Script {
     ERC20 public buyerToken;
     ERC20 public salesToken1;
 
-    address public user = 0x0f7bF2e6BEbf3d352405B0f855d4B6fC6Fe50b3F;
-    address public user2 = 0xDD47792c1A9f8F12a44c299f1be85FFD72A4B746;
-    uint public startTime = 1726362017;
-    uint public endTime = startTime + 54000;
-    uint public receiveTime = 9725671319;
+    uint public startTime = 1726473600;
+    uint public endTime = 1726819200;
+    uint public receiveTime = 1726905600;
+
+
     uint public tokensToSell = 160000 ether;
     address public dead = 0x000000000000000000000000000000000000dEaD;
     
     address public WETH = 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2 ;
     address public USDC = 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48;
     address public USDT = 0xdAC17F958D2ee523a2206206994597C13D831ec7;
-    address deployer = user;
 
     IERC20[] public buyerTokens;
-    uint[] public tokensPerTickets = [1e5, 1e5, 0.000043 ether];
+    uint[] public tokensPerTickets = [7e5,7e5,0.0003 ether];
 
     function run() public {
-        vm.startBroadcast(deployer);
+        vm.startBroadcast();
 
 
         buyerTokens.push(IERC20(USDC));
         buyerTokens.push(IERC20(USDT));
         buyerTokens.push(IERC20(WETH));
-        //buyerTokens.push(IERC20(isom));
         ido = new LotteryIDO(
             buyerTokens,
             tokensToSell,
@@ -121,10 +119,7 @@ contract Deploy is Script {
             tokensPerTickets,
             dead
         );
-        //buyerTokens[0].approve(address(ido), type(uint256).max);
-        //buyerTokens[1].approve(address(ido), type(uint256).max);
         
-
         ido.setStartFlg(true);
         ido.setWNative(WETH);
         vm.stopBroadcast();
